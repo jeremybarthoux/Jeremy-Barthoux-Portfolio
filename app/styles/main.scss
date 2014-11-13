@@ -1,0 +1,738 @@
+@import "reset";
+
+/*--------  Size config   ---------*/
+    @mixin size(){width:950px; position: relative; margin:auto;}
+
+/*--------  Color config  ---------*/
+    $white:#FFF;
+    $blue:#2573BA;
+    $blue2:#185d9c;
+    $blue3:#104b81;
+    $blue4:#073865;
+    $grey:#252525;
+    $greyWhite:#dedede;
+
+    $patternWhite:url(/images/foil.png);
+    $patternBlue:url(/images/pattern_bis.png);
+    $patternBlack:url(/images/pattern_black.png);
+    @mixin pattern($pattern){background:$pattern repeat;}
+    @mixin backgroundBase(){background-size:100%;background-repeat:no-repeat; background-position:center center;}
+
+/*--------  Typos config   ---------*/
+    $fontLight:300;
+    $fontReg:400;
+    $fontBig:700;
+    $fontSizeP: 1.2em;
+    $fontSizeH1: 2em;
+    $fontSizeH2: 1.5em;
+    $fontSizeLi: 0.9em;
+
+    @mixin typo($size,$weight,$color){
+        font-family: "Quicksand", sans-serif;
+        font-size: $size;
+        font-weight: $weight;
+        color: $color;
+    }
+
+/*--------  Global config  ---------*/
+    section{
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    body{
+        height: 100%;
+        widows: 100%;
+        overflow-x: hidden;
+        @include typo($fontSizeP,$fontReg,$white);
+    }
+    .abs{position: absolute;}
+    .absL50{position: absolute;left:50%;}
+    .top{top: 0;}
+    .bottom{bottom: 0;}
+    .left{left: 0;}
+    .right{right: 0;}
+
+/*--------  Header   ---------*/
+    header{
+        z-index: 500;
+        position: fixed;
+        top: 50%;
+        margin-top: -80px;
+        height: 160px;
+        background-color: $greyWhite;
+        ul:hover{width: 160px;}
+        ul{
+            transition-property: width;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-in;
+            height: 100%;
+            width: 40px;
+            overflow: hidden;
+            box-shadow: rgba(0,0,0,0.5) 2px 0 10px;
+
+            li:hover .lineDeco{width: 10px;}
+            li{
+                cursor: pointer;
+                height: 40px;
+                width: 100%;
+                position: relative;
+                img{
+                    margin-top: 2.5px;
+                    margin-left: 2.5px;
+                    height: 35px;
+                    width: 35px;
+                    display: inline-block;
+                }
+                .lineDeco{
+                    transition-property: width;
+                    transition-duration: 0.3s;
+                    z-index: 550;
+                    height: 100%;
+                    width: 5px;
+                }
+                .textBlock{
+                    left: 40px;
+                    height: 40px;
+                    width: 120px;
+                    background-color: $white;
+                    @include typo($fontSizeLi,$fontReg,$grey);
+
+                    .text{                      
+                        line-height: 40px;
+                        margin-left: 5px;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .textBlock.active{color: $white;}
+            }
+            li.home, li.home .textBlock.active,
+            li.home .lineDeco {background-color: $blue;}
+            li.about, li.about .textBlock.active,
+            li.about .lineDeco {background-color: $blue2;}
+            li.portfolio, li.portfolio .textBlock.active,
+            li.portfolio .lineDeco {background-color: $blue3;}
+            li.contact,li.contact .textBlock.active,
+            li.contact .lineDeco {background-color: $blue4;}
+
+            li .textBlock.active::after{
+                content: "";
+                width: 0px;
+                height: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                left: 40px;
+                position: fixed;
+                top: 50%;
+            }
+
+            li.home .textBlock.active::after{margin-top: -68px;}
+            li.about .textBlock.active::after{margin-top: -28px;}
+            li.portfolio .textBlock.active::after{margin-top: 12px;}
+            li.contact .textBlock.active::after{margin-top: 52px;}
+
+            li.home .textBlock.active::after{border-left: 8px solid $blue;}
+            li.about .textBlock.active::after{border-left: 8px solid $blue2;}
+            li.portfolio .textBlock.active::after{border-left: 8px solid $blue3;}
+            li.contact .textBlock.active::after{border-left: 8px solid $blue4;}
+        }
+    }
+
+/*--------  Sections   ---------*/
+#bg_white{
+    width: 100%;
+    height: 2000px;
+    position: absolute;
+    z-index: 0;
+    @include pattern($patternWhite);
+}
+#home{
+    z-index: 0;
+    background-size: cover;    
+    background-image: url(/images/bg_1.jpg);
+    background-attachment: fixed;
+
+    .black-overlay{
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: radial-gradient(ellipse at center center , transparent 0%, rgba(0, 0, 0, 0.6) 100%) repeat scroll 0% 0% transparent;
+    }
+
+    img{
+        z-index: 50;
+        height: 300px;
+        width: 262.5px;
+        top: 30%;
+        margin-top: -150px;
+        margin-left: -131.25px;
+    }
+
+    .wrapper{
+        z-index: 50;
+        top: 80%;
+        background-color: rgba(0,0,0,0.2);
+        width: 100%;
+        height: 100px;
+        margin-top: -50px;
+        overflow: hidden;
+        .cpt{
+            width: 550px;
+            height: 100%;
+            margin-left: -275px;
+            white-space: nowrap;
+            .titleDecalage{margin-right: -40px;}
+        }
+    }
+    p{
+        @include typo($fontSizeH1,$fontLight,$white);
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 100px;
+    }
+    svg{
+        height: 70px;
+        width: 80px;
+        margin-top: -35px;
+        margin-left: -40px;
+        top: 50%;
+    }
+}
+
+#citation{
+    z-index: 100;
+    height: 400px;
+    box-shadow: rgba(0,0,0,0.2) 0 -2px 10px;
+    @include pattern($patternWhite);
+
+    .wrapper{
+        @include size();
+        position: absolute;
+        left: 50%;
+        margin-left: -475px;
+        top: 50%;
+        margin-top: -100px;
+        height: 200px;
+
+        .citation_size{
+            width: 100%;
+            height: 95px;
+            margin-top: -47.5px;
+            top: 50%;
+            opacity: 0;
+            scale: 0;
+        }
+        .img{
+            @include backgroundBase();
+            background-image: url(/images/nav_bg.svg);
+            height: 20px;
+            width: 20px;
+            left: 50%;
+            margin-left: -10px;
+            top: 50%;
+        }
+        .top.img{margin-top: -10px;}
+        .bottom.img{margin-bottom: 0;margin-top: -10px;}
+
+        span{
+            top: 50%;
+            height: 2px;
+            width: 100px;
+            background-color: $grey;
+        }       
+        .leftDeco{left: 50%;margin-left: -140px;}
+        .rightDeco{left: 50%;margin-left: 40px;}
+    }
+}
+
+#about{
+    z-index: 200;
+    height: 400px;
+    @include pattern($patternBlue);
+    overflow: hidden;
+    box-shadow: $grey 2px 2px 10px;/*Parallax_op*/
+
+    .wrapper{
+        @include size();
+        height: 100%;
+
+        span.abs{
+            height: 2px;
+            left: -100%;
+            right: 200%;
+            margin-top: 76px;
+            margin-right: 60px;
+            background-color: $white;
+            @media (max-width: 1140px) {display:none;}
+        }
+        .circle_syb{
+            margin-right: -23px;
+            margin-top: -7px;
+            height: 18px;
+            width: 16px;
+            @media (max-width: 1140px) {display:none;}
+        }
+        p{
+            width: 800px;
+            margin-top: 60px;
+            left: 0;
+            visibility: hidden;
+            line-height: 1.5em;
+            @media (max-width: 1140px) {width: 600px;margin-top: 30px;}
+        }
+    }
+    >img{
+        margin-top: -10px;
+        @media (max-width: 1800px) {margin-right: -130px;}
+        @media (max-width: 1500px) {margin-right: -300px;}
+    }
+
+}
+
+#competence{
+    z-index: 100;
+    height: 1130px;
+    @include pattern($patternWhite);
+    @include typo($fontSizeLi,$fontReg,$grey);
+
+    h2{
+        font-family: "Arvo", sans-serif;
+        font-size: $fontSizeH2;
+        font-weight: $fontBig;
+        width: 100%;
+        text-align: center; 
+    }
+
+    .cptTxt{
+        height: 70px;
+        background-color: $white;
+        width: 400px;
+        margin: auto;
+        position: relative;
+        span{
+            margin: auto;
+            z-index: 150;
+            height: 1px;
+            background-color: $grey;
+            width: 220px;
+            display: block;
+            position: relative;
+        }
+        .topLine{
+            top: 20px;
+        }
+        .bottomLine{
+            top: 10px;
+        }
+        h2{
+            padding-top: 28px;
+            font-size: $fontSizeH1;
+        }
+        .triangle{
+            @include backgroundBase();
+            background-image: url(/images/triangle.svg);
+            height: 120px;
+            width: 400px;/*Parallax*/
+            top: 70px;
+        }
+    }
+
+    .wrapper{
+        @include size();
+        height: 100%;
+        margin-top: 130px; @media (max-width: 1000px) {margin-top: 100px;}
+        >div{
+            height: 720px;
+            width: 436px;
+            position: relative;
+            h2{
+                opacity: 0;
+                margin-top: 290px;
+            }
+            ul{
+                opacity: 0;
+                width: 400px;
+                line-height: 1.8em;
+                margin-top: 50px;
+                margin-left: 60px;
+                
+            }
+            svg{
+                width: 200px;
+                margin-left: -100px;
+                top: 60px;
+            }
+            #bg_x5F_graph,#in_x5F_graph,
+            #bg_x5F_prog,#in_x5F_prog .nb{
+                opacity: 0;
+            }
+            #bg_x5F_prog .left{
+                position: absolute;
+                left: 40px;
+                margin-left: 40px;
+            }
+            #bg_x5F_prog .right{
+                margin-right: 40px;
+            }
+        }
+        >div.floatLeft{
+            float: left;
+            margin-left: -20px; 
+            background-image: url(/images/competence_bg.svg);
+            @media (max-width: 1000px) {margin-left: 0;}}
+        >div.floatRight{
+            float: right;
+            margin-right: -20px;
+            background-image: url(/images/competence_bg.svg);
+            @media (max-width: 1000px) {margin-right: 0;}}
+    }
+}
+
+#portfolio{
+    z-index: 200;
+    height: 100%;
+    background-color: $blue;
+    border-bottom: 2px solid $white;
+    .cptTxt{
+        height: 70px;
+        background-color: $blue;
+        width: 400px;
+        margin: auto;
+        position: relative;
+        top: -70px;
+        .triangle{
+            @include backgroundBase();
+            background-image: url(/images/triangle_black.svg);
+            height: 120px;
+            width: 400px;/*Parallax*/
+            top: -119px;
+        }
+        svg{
+            z-index: 250;
+            position: absolute;
+            left: 50%;
+            top: -110px;
+            height: 40px;
+            margin-left: -20px;
+            cursor: pointer;
+        }
+        .overflow{
+            overflow: hidden;
+            height: 100%;
+        }
+        h2{
+            font-family: "Arvo", sans-serif;
+            font-size: $fontSizeH1;
+            font-weight: $fontBig;
+            width: 100%;
+            text-align: center;
+            padding-top: 13px;
+            opacity: 0;/*Parallax*/
+        }
+        span{
+            height: 2px;
+            background-color: $white;
+            width: 250px;
+            display: block;
+            position: relative;
+        }
+        .topLine{
+            right:-150px;
+            top: 0;
+        }
+        .bottomLine{
+            top: 10px;
+            left: 0;
+        }
+    }
+    
+    .wrapper{
+        @include size();
+        margin-top: -70px;
+
+        ul{
+            height: 100%;
+            width: 100%;
+            font-size: 0;
+            padding-bottom: 70px;
+            border-left: 2px solid $white;
+            border-right: 2px solid $white;
+            li{
+                box-sizing: border-box;
+                height: 350px;
+                width: 350px;
+                display: inline-block;
+                margin-top: 100px;
+                border-top: 2px solid $white;
+                border-bottom: 2px solid $white;
+                position: relative;
+            }
+            li:nth-child(even){
+                margin-left: 250px;
+                border-left: 2px solid $white;
+            }
+            li:nth-child(odd){
+                border-right: 2px solid $white;
+            }
+            img{
+                height: 90%;
+                width: 90%;
+                padding-top: 5%;
+                padding-left: 5%;
+            }
+            li:nth-child(odd) .txt{
+                right:0;
+                margin-right:-200px;
+            }
+            li:nth-child(even) .txt{
+                left:0;
+                margin-left: -200px;
+                text-align: right;
+            }
+            li:nth-child(odd) .wrapperTxt{margin-left: -200px;}
+            li:nth-child(even) .wrapperTxt{margin-left: 200px;}
+            .txt{
+                width: 200px;
+                height: 100%;
+                font-size: 21px;
+                overflow: hidden;
+                .wrapperTxt{
+                    box-sizing: border-box;
+                    padding: 10px;
+                    width: 100%;
+                    border-top: 2px solid $white;
+                    margin-top: 30px;
+                    h2{
+                        @include typo($fontSizeH2,$fontReg,$white);
+                    }
+                    h3{
+                        @include typo($fontSizeLi,$fontReg,$white);
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+#cv{
+    position: relative;
+    z-index: 100;
+    height: 800px;
+    background-size: cover;
+    background-image: url(/images/bg_2_fixed.jpg);
+    background-attachment: fixed;
+    $topSvg:35%;
+    $heightSvg: 185px;
+    $widthSvg: 215px;
+    svg{
+        cursor: pointer;
+        width: $widthSvg;
+        height: $heightSvg;
+        margin-top: -$heightSvg/2;
+        margin-left: -$widthSvg/2;
+        top: $topSvg;
+        #mainCv{
+            display: block;
+        }
+        #eyeCv{
+            opacity: 0;
+        }
+    }
+    .lineCo{
+        width: 10px;
+        top: $topSvg;
+        margin-top: $heightSvg/2;
+        margin-left: -5px;
+        background-color: $white;
+        opacity: 0.5;
+    }
+    .lineBottom{
+        display: block;
+        height: 150px;
+        opacity: 0.7;
+        width: 100%;
+        @include backgroundBase();
+        background-image: $patternBlack;
+    }
+}
+
+#contact{
+    z-index: 200;
+    @include pattern($patternBlue);
+    width: 950px;
+    margin: auto;
+    margin-top: -200px;
+    height: 400px;
+    h2{
+        @include typo($fontSizeH2,$fontReg,$white);
+    }
+    p, h2{
+        padding-top: 15px;
+        padding-left: 15px;
+    }
+    .error{
+        color: orange;
+        font-size: 0.8em;
+    }
+    ul{
+        height: 200px;
+        width: 45%;
+        margin-top: 100px;
+        margin-left: 25px;
+        li:hover{opacity: 1;}
+        li{
+            opacity: 0.6;
+            height: 65px;
+            width: 100%;
+            position: relative;
+            input{
+                background:none;
+                border:none;
+                margin-left: 5px;
+                width: 70%;
+                @include typo($fontSizeLi,$fontReg,$white);
+                input[placeholder]{
+                    color: $white;
+                    font-style: italic;
+                }
+            }
+            span{
+                display: block;
+                height: 1px;
+                width: 100%;
+                background-color: rgba(255,255,255,0.5);
+                margin-top: 5px;
+            }
+        }
+        li:last-of-type{
+            position: absolute;
+            top: 70px;
+            left: 52%;
+            width: 45%;
+            label{top: 65px;}
+            textarea{
+                box-sizing: border-box;
+                background:none;
+                border: 1px solid rgba(255,255,255,0.5);
+                width: 100%;
+                height: 230px;
+                padding: 10px;
+                margin-top: 10px;
+                @include typo($fontSizeLi,$fontReg,$white);
+                input[placeholder]{
+                    color: $white;
+                    font-style: italic;
+                }
+                resize:none;
+            }
+        }
+    }
+    input.abs.right{
+        cursor: pointer;
+        z-index: 250;
+        height: 50px;
+        width: 180px;
+        margin-top: 10px;
+        margin-right: -25px;
+        background-color: $grey;
+        @include typo($fontSizeP,$fontReg,$greyWhite);
+        box-shadow: rgba(0,0,0,0.5) -1px 2px 2px;
+        border: none;
+    }
+    input.abs.right:hover{
+        color: $white;
+    }
+    .decoSubmit{
+        z-index: 150;
+        height:0;
+        width: 0;
+        opacity: 0.8;
+        margin-top: 60px;
+        margin-right: -25px;
+        border-bottom: 25.5px solid transparent;
+        border-left: 25.5px solid $grey;
+    }
+}
+
+#map{
+    z-index: 100;
+    background-size: cover;    
+    background-image: url(/images/map_3.jpg);
+    background-position:center top;
+    height: 500px;
+    margin-top: -200px;
+    margin-bottom: 150px;
+    span{
+        width: 5px;
+        @include pattern($patternBlue);
+        margin-left: -2.5px;
+        bottom: 150px;
+        svg{
+            height: 18px;
+            width: 16px;
+            margin-left: -8px;
+            margin-bottom: -16px;
+        }
+    }
+}
+
+#link{
+    z-index: -100;
+    height: 150px;
+    background-color: $grey;
+    position: fixed;
+    bottom: 0;
+    .wrapper{
+        @include size();
+        padding-top: 20px;
+        .col3{
+            width: 30%;
+            float: left;
+            position: relative;
+            margin-left: 10px;
+            h2{
+                font-size: $fontSizeLi;
+                text-decoration: none;
+                line-height: 30px;
+                position: relative;
+            }
+            span{
+                height: 1px;
+                background-color: $white;
+                display: block;
+                position: relative;
+            }
+            .deco1{width:105px;}
+            .deco2,.deco3{width:245px;}
+            ul{
+                padding-top: 5px;
+                padding-left: 5px;
+            }
+            li{
+                font-size: $fontSizeLi;
+            }
+            a{
+                text-decoration: none;
+                color: $white;
+            }
+            a:hover,a:active{
+                text-decoration: underline;
+            }
+        }
+        .mrL{margin-left: 3%;}
+        .col3::before{
+            content: "";
+            height: 100%;
+            width: 1px;
+            background-color: $white;
+            position: absolute;
+            left: -10px;
+        }
+    }
+}
