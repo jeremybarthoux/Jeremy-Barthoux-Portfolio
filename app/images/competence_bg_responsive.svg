@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325 429">
+	<defs>
+		<filter id="blurFilter2" width="150%" height="150%">
+			<feOffset in="SourceAlpha" dx="5" dy="10" result="offset2"/>
+			<feGaussianBlur in="offset2" stdDeviation="5"  result="blur2"/>
+			<feComponentTransfer in="blur2" result="opaci">
+				<feFuncA type="linear" slope="0.3"/>
+			</feComponentTransfer>
+			<feMerge>
+				<feMergeNode in="opaci" />
+				<feMergeNode in="SourceGraphic" />
+			</feMerge>
+		</filter>
+	</defs>
+	<polygon fill="#FFFFFF" points="31.625,23.833 31.625,331.919 162.351,407.445 293.075,331.919 293.075,23.833 162.351,99.359" filter="url(#blurFilter2)"/>
+</svg>

@@ -6,6 +6,35 @@ html
     link(href='http://fonts.googleapis.com/css?family=Quicksand:400,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='styles/main.css', type='text/css')
   body
+    //- header
+      ul.left.top
+        li.home
+          img(src='images/icn_home.svg')
+          span.lineDeco.abs.right
+          .textBlock.abs.top.active
+            span.text: a(href='#home') Home
+        li.about
+          img(src='images/icn_about.svg')
+          span.lineDeco.abs.right
+          .textBlock.abs.top
+            span.text: a(href='#about') A propos
+        li.portfolio
+          img(src='images/icn_portfolio.svg')
+          span.lineDeco.abs.right
+          .textBlock.abs.top
+            span.text: a(href='#portfolio') Portfolio
+        li.contact
+          img(src='images/icn_contact.svg')
+          span.lineDeco.abs.right
+          .textBlock.abs.top
+            span.text: a(href='#contact') Contact
+    //- section#home
+      img.absL50(src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzQ5LjciPjxwYXRoIGZpbGw9IiMyNjc0QkEiIGQ9Ik0yNzQuMSA0NS41SDEyNC40TDQ5LjYgMTc1LjFMOTEuNyAyNDhoMzVjMTAuMSAwIDE4LjctMi45IDI0LjEtOS40YzUuNS02LjQgOC40LTEzLjggOC40LTI1LjdWODIuMmwxOS4zIDE4LjcgdjExMmMwIDE2LjgtNC42IDI5LjktMTMuNiAzOS4zYy05LjEgOS41LTIxLjcgMTQuMi0zNy45IDE0LjJoLTI0LjhsMjIuMiAzOC4zaDE0OS43bDc0LjgtMTI5LjZMMjc0LjEgNDUuNXogTTI2MS41IDI1Mi4xIGMtMTEuMSA5LjYtMjYuNSAxNC4zLTQ2LjMgMTQuM2gtMzUuOWwxOC4yLTE4LjVoMTguOGMxMy42IDAgMjQuOS0yLjkgMzIuNi05LjVjNy43LTYuNiA5LjctMTQuOSA5LjctMjYuN2MwLTExLjgtNC4yLTIxLTEyLjYtMjcuNiBjLTguNC02LjYtMjAuMS0xMC0zNS0xMGgtMTUuNmwtMC4xLTE4LjNoMTMuN2MxMiAwIDIyLjEtMi44IDI4LjktOC41YzYuOC01LjggOS42LTEyLjggOS42LTIzYzAtMTAuMy00LjEtMTcuMi0xMC40LTIyLjYgYy03LjEtNi4xLTE1LjYtOC0yOC42LThoLTguOGwtMTkuNC0xOS42aDI1LjljMTkgMCAzMy45IDQuMyA0NC43IDEzYzEwLjcgOC43IDE2LjEgMjAuNyAxNi4xIDM2YzAgMTUuMy01LjQgMjcuMy0xNi4xIDM1LjkgYy0xLjkgMS41LTMuOSAyLjktNi4yIDQuMmM1LjkgMi41IDExLjEgNS41IDE1LjYgOWMxMS44IDkuNiAxNy44IDIyLjkgMTcuOCA0MEMyNzguMiAyMjkuMyAyNzIuNiAyNDIuNSAyNjEuNSAyNTIuMXoiLz48cG9seWdvbiBmaWxsPSIjMjY3NEJBIiBwb2ludHM9IjM0NC4xLDkyLjUgMzIyLjQsOTIuNSAzNzAuMSwxNzUuMSAyODQuNywzMjMuMSAxMTMuOCwzMjMuMSAyOC4zLDE3NS4xIDExMy44LDI3LjEgMjg0LjcsMjcuMSAzMTEuNyw3My45IDMzMy40LDczLjkgMjk1LjUsOC40IDEwMyw4LjQgNi43LDE3NS4xIDEwMywzNDEuOSAyOTUuNSwzNDEuOSAzOTEuOCwxNzUuMSIvPjwvc3ZnPg==', alt='Logo Jeremy Barthoux')
+      .wrapper.abs
+        .cpt.absL50
+          p.abs.left.titleDecalage Graphiste
+          include ./include/circle_home.jade
+          p.abs.right.titleDecalage Developpeur
     header
       ul
         li: a(href='#home') Home
@@ -15,35 +44,28 @@ html
         li: a(href='#contact') Contact
       span.active
       img(src='images/logo.svg' alt='Logo Jeremy Barthoux')
-      p.responsiveMenu Menu
+
     section#home
+      //- .slider
+        .bgSlider(style="background-image:url('images/bg_1.jpg')")
+        .bgSlider(style="background-image:url('images/bg_1.jpg')")
+        .bgSlider(style="background-image:url('images/bg_1.jpg')")
+        .bgSlider(style="background-image:url('images/bg_1.jpg')")
+        .bgSlider(style="background-image:url('images/bg_1.jpg')")
       .slider
-        .loader
         .wrapper
           ul
             li
-              a(href='#project1').wrapperTxt
-                h3 L'Hotel du Mur
-                p Site web &amp Identité Graphique
             li
-              a(href='#project2').wrapperTxt
-                h3 22222222222
-                p 222222222222222222
             li
-              a(href='#project3').wrapperTxt
-                h3 3333333333
-                p 333333333333333333
             li
-              a(href='#project5').wrapperTxt
-                h3 444444
-                p 444444444444444
             li
-              a(href='#project7').wrapperTxt
-                h3 55555555555555
-                p S555555555555555
+        .navigation
+          : a(href='#' class='prev') Previous
+          : a(href='#' class='prev') Previous
         .pagination
       img.title(src='images/title_home.svg' alt='Jeremy Barthoux : Graphiste et Developpeur')
-      a(href='#citation').bottom
+      .bottom
         p Scroll Down
         img.chevron(src='images/chevron_home.svg')
         img.flecheHome(src='images/fleche_home.svg')
@@ -111,85 +133,53 @@ html
       .wrapper
         ul
           li#project1
-            a(href="#", data-path-hover="M-0.067-0.107l100.136,0v32.201L84.167,17.666L50,11l-33.167,7.333L-0.067,32.094V-0.107z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M-0.067-0.107l100.136,0v33.201L84.167,54L50,69.833L16.833,57.166L-0.067,33.094V-0.107z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 111
+                h3 Réalisation d'une affiche pour un contour
           li.width#project2
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 222
+                h3 Réalisation d'une affiche pour un contour
           li.height.width#project3
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/theline.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 444
+                h3 Réalisation d'une affiche pour un contour
           li#project4
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 555
+                h3 Réalisation d'une affiche pour un contour
           li.height#project5
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 555
+                h3 Réalisation d'une affiche pour un contour
           li.height#project6
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 666
+                h3 Réalisation d'une affiche pour un contour
           li.height.width#project7
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 777
+                h3 Réalisation d'une affiche pour un contour
           li#project8
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            img(src='images/projet/cirque.jpg')
+            .txt.abs.top
+              .wrapperTxt
+                h2 888
+                h3 Réalisation d'une affiche pour un contour
     section#cv
       svg.absL50(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 215.1 185.3')
         path#backCv(opacity='0.5', fill='#FFFFFF', d='M161.2 185.3h-107L0.8 92.7L54.3 0h107l53.5 92.7L161.2 185.3z M60.1 175.1h95.2 L203 92.7l-47.6-82.5H60.1L12.5 92.7L60.1 175.1z')
@@ -253,7 +243,7 @@ html
             li
               a(href='http://gulpjs.com/') Gulp
         .col3.mrL
-          h2 Design &amp Développement :
+          h2 Design & Développement :
           span.deco3
           ul
             li
@@ -266,9 +256,6 @@ html
     script(type='text/javascript', src='scripts/vendor/jquery.scrollmagic.debug.js')
     script(type='text/javascript', src='scripts/vendor/isotope.min.js')
     script(type='text/javascript', src='scripts/vendor/isotope.packery.min.js')
+    //- script(type='text/javascript', src='scripts/vendor/isotope.masonry.min.js')
     script(type='text/javascript', src='scripts/vendor/extra.slider.js')
-    script(type='text/javascript', src='scripts/vendor/snap.svg.min.js')
-    script(type='text/javascript', src='scripts/vendor/load.slider.js')
     script(type='text/javascript', src='scripts/main.js')
-
-

@@ -4,16 +4,36 @@
 //--------  Size config   ---------
 @mixin size() { width: 950px; position: relative; margin: auto;}
 
+//--------  Media Queries   ---------
+
+@mixin responsive($media) {
+    @if $media == vld {
+        @content;
+    } @else if $media == ld {
+        @media only screen and (max-width: 1919px) { @content; }
+    } @else if $media == id {
+        @media only screen and (max-width: 1500px) { @content; }
+    } @else if $media == iid {
+        @media only screen and (max-width: 1340px) { @content; }
+    } @else if $media == nd {
+        @media only screen and (max-width: 1200px) { @content; }
+    } @else if $media == sd {
+        @media only screen and (max-width: 979px) { @content; }
+    } @else if $media == lp {
+        @media only screen and (max-width: 767px) { @content; }
+    } @else if $media == sp {
+        @media only screen and (max-width: 480px) { @content; }
+    }
+}
+
 //--------  Color config  ---------
 $white: #fff;
-$white-grey: #dedede;
 $blue: #2573ba;
 $blue2: #185d9c;
 $blue3: #104b81;
 $blue4: #073865;
 $grey: #252525;
-$grey-black: #161616;
-$grey-white: #3b3b3b;
+$grey-white: #dedede;
 
 $pattern-white: url('/images/foil.png');
 $pattern-blue: url('/images/pattern_bis.png');
@@ -44,28 +64,6 @@ $font-size-li: 1em;
     color: $color;
 }
 
-//--------  Media Queries   ---------
-
-@mixin responsive($media) {
-    @if $media == vld {
-        @content;
-    } @else if $media == ld {
-        @media only screen and (max-width: 1919px) { @content; }
-    } @else if $media == id {
-        @media only screen and (max-width: 1500px) { @content; }
-    } @else if $media == iid {
-        @media only screen and (max-width: 1340px) { @content; }
-    } @else if $media == nd {
-        @media only screen and (max-width: 1200px) { @content; }
-    } @else if $media == sd {
-        @media only screen and (max-width: 979px) { @content; }
-    } @else if $media == lp {
-        @media only screen and (max-width: 767px) { @content; }
-    } @else if $media == sp {
-        @media only screen and (max-width: 480px) { @content; }
-    }
-}
-
 //--------  Global config  ---------
 section {
     display: block;
@@ -89,294 +87,249 @@ body {
 .left {left: 0;}
 .right {right: 0;}
 
-a {text-decoration: none;}
-
 //--------  Header   ---------
 header {
-    position: fixed;
     z-index: 500;
-    height: 51px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: $white;
-    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
-
+    position: fixed;
+    top: 50%;
+    margin-top: -80px;
+    height: 160px;
+    background-color: $grey-white;
+    ul:hover {width: 160px;}
     ul {
+        transition-property: width;
+        transition-duration: .3s;
+        transition-timing-function: ease-in;
         height: 100%;
-        width: 100%;
+        width: 40px;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, .5) 2px 0 10px;
 
+        li:hover .lineDeco {width: 10px;}
         li {
-            @include typo-quick($font-size-p, $font-big, $grey);
-            line-height: 50px;
-            vertical-align: middle;
-            text-align: center;
-            display: inline-block;
-            background-color: $white;
-
-            @include responsive(sp) {
-                display: none;
-            }
-
-            a {
-                padding: 25px;
-                color: $grey;
-
-                @include responsive(lp) {
-                    padding: 25px 7px 25px 7px;
-                    font-size: -0.3+$font-size-p
-                }
-            }
-        }
-    }
-
-    .responsiveMenu {
-        display: none;
-
-        @include responsive(sp) {
-            display: block;
-            @include typo-quick($font-size-p+.3, $font-big, $grey);
-            margin-left: 50%;
-            margin-top: -40px;
-            transform: translateX(-50%);
-            width: 65px;
             cursor: pointer;
+            height: 40px;
+            width: 100%;
+            position: relative;
+            
+            img {
+                margin-top: 2.5px;
+                margin-left: 2.5px;
+                height: 35px;
+                width: 35px;
+                display: inline-block;
+            }
+
+            .lineDeco {
+                transition-property: width;
+                transition-duration: .3s;
+                z-index: 550;
+                height: 100%;
+                width: 5px;
+            }
+
+            .textBlock {
+                @include typo-quick($font-size-li, $font-reg, $grey);
+                left: 40px;
+                height: 40px;
+                width: 120px;
+                background-color: $white;
+
+                &.active {color: $white;}            
+            }
+
+            .text {                      
+                line-height: 40px;
+                margin-left: 5px;
+                height: 100%;
+                width: 100%;
+            }
         }
-    }
 
-    span.active {
-        height: 1px;
-        width: 55px;
-        border-radius: 5px;
-        background-color: $grey;
-        position: absolute;
-        left: 25px;
-        top: 50%;
-        margin-top: 11px;
-        z-index: 600;
-
-        @include responsive(sp) {
-            display: none;
+        .home, 
+        .home .textBlock.active, 
+        .home .lineDeco {
+            background-color: $blue;
         }
-    }
 
-    img {
-        height: 40px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
+        .about, 
+        .about .textBlock.active,
+        .about .lineDeco {background-color: $blue2;}
+
+        .portfolio,
+        .portfolio .textBlock.active,
+        .portfolio .lineDeco {background-color: $blue3;}
+
+        .contact,
+        .contact .textBlock.active,
+        .contact .lineDeco {background-color: $blue4;}
+
+        .textBlock.active::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            left: 40px;
+            position: fixed;
+            top: 50%;
+        }
+
+        .home .textBlock.active::after {margin-top: -68px; border-left: 8px solid $blue;}
+        .about .textBlock.active::after {margin-top: -28px; border-left: 8px solid $blue2;}
+        .portfolio .textBlock.active::after {margin-top: 12px; border-left: 8px solid $blue3;}
+        .contact .textBlock.active::after {margin-top: 52px; border-left: 8px solid $blue4;}
     }
 }
 
 //--------  Sections   ---------
+//#bg_white {
+//    width: 100%;
+//    height: 2000px;
+//    position: absolute;
+//    z-index: 0;
+//    @include pattern($pattern-white);
+//}
+
+#home {
+    z-index: 0;
+    background-size: cover;
+    background-position: center center; 
+    background-image: url('/images/bg_1.jpg');
+    background-attachment: fixed;
+
+    img {
+        @mixin img-home($height, $screen) {
+            @include responsive($screen) {
+                $home-img-height:$height;
+                $home-img-width:$home-img-height*87.5/100;
+                height: $home-img-height;
+                width: $home-img-width;
+                top: 30%;
+                margin-top: -$home-img-height/2;
+                margin-left: -$home-img-width/2;
+            }
+        }
+
+        @include img-home(350px, vld);
+        @include img-home(300px, ld);
+        @include img-home(250px, nd);
+        @include img-home(200px, sd);
+        @include img-home(150px, lp);
+        @include img-home(100px, sp);
+        z-index: 50;
+    }
+
+    .wrapper {
+        z-index: 50;
+        top: 80%;
+        background-color: rgba(0, 0, 0, .2);
+        width: 100%;
+        height: 100px;
+        margin-top: -50px;
+        overflow: hidden;
+
+        @include responsive(lp) {
+            height: 80px;
+        }
+
+        @include responsive(sp) {
+            height: 50px;
+        }
+
+        .cpt {
+            width: 550px;
+            height: 100%;
+            margin-left: -275px;
+            white-space: nowrap;
+
+            @include responsive(lp) {
+                width: 300px;
+                margin-left: -150px;
+            }
+        }
+    }
+
+    .right.titleDecalage {
+        margin-right: -40px;
+
+        @include responsive(lp) {
+            margin-right: -80px;
+        }  
+
+        @include responsive(sp) {
+            margin-right: -55px;
+        }
+    }
+
+    .left.titleDecalage {
+        margin-left: 20px;
+
+        @include responsive(lp) {
+            margin-left: -35px;
+        }
+
+        @include responsive(sp) {
+            margin-left: -20px;
+        }
+    }
+
+    p {
+        @include typo-quick($font-size-h1+.5, $font-light, $white);
+        
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 100px;
+
+        @include responsive(lp) {
+            line-height: 80px;
+            font-size: $font-size-h1;
+        }
+
+        @include responsive(sp) {
+            line-height: 50px;
+            font-size: -.2+$font-size-h1;
+        }
+    }
+
+    svg {        
+        $home-svg-width: 80px;
+        $home-svg-height: $home-svg-width*87.5/100;
+        height: $home-svg-height;
+        width: $home-svg-width;
+        margin-top: -$home-svg-height/2;
+        margin-left: -$home-svg-width/2;
+        top: 50%;
+
+        @include responsive(lp) {
+            $home-svg-width: 50px;
+            $home-svg-height: $home-svg-width*87.5/100;
+            height: $home-svg-height;
+            width: $home-svg-width;
+            margin-top: -$home-svg-height/2;
+            margin-left: -$home-svg-width/2;
+        }
+
+        @include responsive(sp) {
+            $home-svg-width: 30px;
+            $home-svg-height: $home-svg-width*87.5/100;
+            height: $home-svg-height;
+            width: $home-svg-width;
+            margin-top: -$home-svg-height/2;
+            margin-left: -$home-svg-width/2;
+        }
+    }
+}
+
 .backgroundPattern {
     @include pattern($pattern-white);
     position: absolute;
     z-index: 50;
-    height: 2800px;
+    height: 2000px;
     width: 100%;
-
-    @include responsive(iid) {
-        height: 3500px;
-    }
 }
 
-#home {
-    z-index: 0;
-    background-color: $grey;
-
-    .slider {
-        height: 100%;
-        width: 100%;
-
-        .wrapper {
-            z-index: 30;
-            height: 100%;
-            width: 100%;
-
-            ul {
-                height: 100%;
-                width: 100%;
-                position: relative;
-                list-style: none;
-
-            }
-
-            li {
-                @include background-base();
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                background-size: cover;
-                background-position: fixed;
-
-                &:nth-child(1) {
-                    background-image: url('/images/bg_1.jpg');
-                }
-
-                &:nth-child(2) {
-                    background-image: url('/images/bg_2.jpg');
-                }
-
-                &:nth-child(3) {
-                    background-image: url('/images/bg_1_2.jpg');
-                }
-
-                &:nth-child(4) {
-                    background-image: url('/images/bg_2_2.jpg');
-                }
-
-                &:nth-child(5) {
-                    background-image: url('/images/bg_1_2.jpg');
-                }
-            }
-
-            .wrapperTxt {
-                position: absolute;
-                top: 100px;
-                right: -100%;
-                background-color: $grey;
-
-                h3 {
-                    @include typo-home($font-size-h2, $font-reg, $white);
-                    display: inline-block;
-                    padding: 20px;
-                }
-
-                p {
-                    @include typo-quick($font-size-p, $font-big, $white);
-                    display: inline-block;
-                    padding-right: 20px;
-                }
-            }
-        }
-
-        /*.navigation {
-            height: 50px;
-            position: absolute;
-            top: 50%;
-            margin-top: -25px;
-            z-index: 80;
-
-            a{
-                height: 100%;
-                width: 40px;
-                position: absolute;
-                background-color: white;
-
-                &.prev {
-                    left: 0;
-                }
-
-                &.next {
-                    right: 0;
-                }
-            }
-        }*/
-
-        .pagination {
-            z-index: 80;
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-
-            a {
-                @include background-base();
-                width: 20px;
-                height: 20px;
-                margin-left: 10px;
-                background-image: url('images/nav_bg.svg');
-                display: inline-block;
-                font-size: 0;
-
-                &.active,
-                &:hover {
-                    @include background-base();
-                    width: 20px;
-                    height: 20px;
-                    background-image: url('images/nav_on.svg');
-                    position: relative;
-                }
-            }
-        }
-
-        .loader {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: $grey;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 50;
-        }
-    }
-
-    .title {
-        z-index: 50;
-        $heightImgHome: 400px; 
-        position: absolute;
-        height: $heightImgHome;
-        width: $heightImgHome;
-        left: 0;
-        top: 50%;
-        margin-top: -$heightImgHome/2;
-    }
-
-    .bottom {
-        z-index: 50;
-        position: absolute;
-        width: 250px;
-        height: 90px;
-        border-top: rgba(255, 255, 255, .5) 3px solid;
-        border-left: rgba(255, 255, 255, .5) 3px solid;
-        border-right: rgba(255, 255, 255, .5) 3px solid;
-        border-radius: 10px 10px 0 0;
-        left: 50%;
-        margin-left: -125px;
-        cursor: pointer;
-        transition: opacity 3s ease-in-out;
-
-        &:hover {
-            .chevron,
-            .flecheHome {
-                opacity: 1;
-            }
-        }
-
-
-        p {
-            @include typo-quick($font-size-h2, $font-big, $white);
-            line-height: 20px;
-            vertical-align: middle;
-            text-align: center;
-            letter-spacing:2px;
-            margin-top: 20px;
-        }
-
-        .chevron {
-            position: absolute;
-            width: 50px;
-            left: 50%;
-            margin-left: -25px;
-            margin-top: 10px;
-            opacity: 0.4;
-        }
-
-        .flecheHome {
-            position: absolute;
-            width: 30px;
-            right: 0;
-            margin-right: -50px;
-            margin-top: -25px;
-            opacity: 0.4;
-        }
-    }
-}
-
-#citation {
+#citation { 
     @include pattern($pattern-white);
     z-index: 100;
     height: 600px;
@@ -443,8 +396,7 @@ header {
 
         .img {
             @include background-base();
-            background-image: url('/images/nav_bg_grey.svg');
-            fill: $grey;
+            background-image: url('/images/nav_bg.svg');
             left: 50%;
             $citation-img-height: 20px;            
             height: $citation-img-height;
@@ -463,12 +415,6 @@ header {
 
         .leftDeco {left: 50%;margin-left: -140px;}
         .rightDeco {left: 50%;margin-left: 40px;}
-
-        .decoWrapperTop,
-        .decoWrapperBottom{
-            position: absolute;
-            left: 50%;
-        }
     }
 }
 
@@ -579,12 +525,13 @@ header {
             margin: auto;
         }
     }
+
 }
 
 #competence {
     @include pattern($pattern-white);
     z-index: 100;
-    height: 1100px;
+    height: 1000px;
 
     @include responsive(iid) {
         height: 100%;
@@ -785,6 +732,7 @@ header {
         background-image: url('/images/triangle_shadows_2.svg');
         margin: auto;
         position: relative;
+        //top: -160px;
         top: -210px;
         
         .overflow {
@@ -834,101 +782,30 @@ header {
     }
     
     .wrapper {
-        margin: auto;
-        margin-top: -150px;
-        padding-bottom: 70px;
-        width: 90%;
-
-        &:after {
-            content: '';
-            display: block;
-            clear: both;
-        }
-
-        svg {
-            fill: $grey-black;
-            opacity: 0.7;
-        }
+        @include size();
+        margin-top: -70px;
 
         ul {
             height: 100%;
             width: 100%;
             font-size: 0;
             padding-bottom: 70px;
+            border-left: 2px solid $white;
+            border-right: 2px solid $white;
 
             li {
-                @include background-base();
-                display: block;
+                box-sizing: border-box;
+                height: 350px;
+                width: 350px;
+                display: inline-block;
+                margin-top: 100px;
+                border-top: 2px solid $white;
+                border-bottom: 2px solid $white;
                 position: relative;
-                width: 25%;
-                height: 500px;
-                background-image: url('images/projet/cirque.jpg');
-                background-size: cover;
-
-                @include responsive(ld) {
-                    height: 400px;
-                }
-
-                @include responsive(id) {
-                    width: 33.3%;
-                }
-
-                @include responsive(nd) {
-                    width: 50%;
-                }
-
-                @include responsive(lp) {
-                    height: 300px;
-                }
-
-                @include responsive(sp) {
-                    width: 80%;
-                    margin-left: 10%;
-                }
-
-
-                &.width {
-                    width: 50%;
-
-                    @include responsive(id) {
-                        width: 66.6%;
-                    }
-
-                    @include responsive(nd) {
-                        width: 100%;
-                    }
-
-                    @include responsive(sp) {
-                        width: 80%;
-                        margin-left: 10%;
-                    }
-                }
-
-                &.height {
-                    height: 1000px;
-
-                    @include responsive(ld) {
-                        height: 800px;
-                    }
-
-                    @include responsive(lp) {
-                        height: 600px;
-                    }
-
-                    @include responsive(sp) {
-                        height: 300px;
-                    }
-                }
-            }
-
-            a{
-                height: 100%;
-                width: 100%;
-                display: block;
             }
 
             .txt {
-                width: 50px;//200px;
+                width: 200px;
                 height: 100%;
                 font-size: 21px;
                 overflow: hidden;
@@ -947,8 +824,42 @@ header {
 
                 h3 {
                     @include typo-quick($font-size-li, $font-reg, $white);
-                }   
+                }
+                
             }
+
+            li:nth-child(even) {
+                margin-left: 250px;
+                border-left: 2px solid $white;
+
+                .txt {
+                    left: 0;
+                    margin-left: -200px;
+                    text-align: right;
+                }
+
+                .wrapperTxt {margin-left: 200px;}
+            }
+
+            li:nth-child(odd) {
+                border-right: 2px solid $white;
+
+                .txt {
+                    right: 0;
+                    margin-right: -200px;
+                }
+
+                .wrapperTxt {margin-left: -200px;}
+            }
+
+            img {
+                height: 90%;
+                width: 90%;
+                padding-top: 5%;
+                padding-left: 5%;
+            }
+
+
         }
     }
 }
@@ -972,10 +883,6 @@ header {
         margin-left: -$width-svg/2;
         top: $top-svg;
 
-        @include responsive(sd) {
-            top: 200px;
-        }
-
         #mainCv {
             display: block;
         }
@@ -992,10 +899,15 @@ header {
         margin-left: -5px;
         background-color: $white;
         opacity: .5;
+    }
 
-        @include responsive(sd) {
-            top: 200px;
-        }
+    .lineBottom {
+        @include background-base();
+        display: block;
+        height: 150px;
+        opacity: .7;
+        width: 100%;
+        background-image: $pattern-black;
     }
 }
 
@@ -1006,13 +918,6 @@ header {
     margin: auto;
     margin-top: -200px;
     height: 400px;
-    box-shadow: rgba(0, 0, 0, .5) 4px 4px 6px;
-
-    @include responsive(sd) {
-        width: 90%;
-        height: 600px;
-        margin-top: -400px;
-    }
 
     h2 {
         @include typo-quick($font-size-h2, $font-reg, $white);
@@ -1027,11 +932,6 @@ header {
     .error {
         color: #ffa500;
         font-size: .8em;
-
-        @include responsive(sd) {
-            position: absolute;
-            bottom: 15px;
-        }
     }
 
     ul {
@@ -1039,20 +939,12 @@ header {
         width: 45%;
         margin-top: 100px;
         margin-left: 25px;
-
-        @include responsive(sd) {
-            width: 90%;
-            margin-top: 50px;
-            margin-left: 5%;
-        }
-
+        li:hover {opacity: 1;}
         li {
-            opacity: 1;
+            opacity: .6;
             height: 65px;
             width: 100%;
             position: relative;
-
-            label {@include typo-quick($font-size-li, $font-reg, $white);}
 
             input {
                 @include typo-quick($font-size-li, $font-reg, $white);
@@ -1062,16 +954,20 @@ header {
                 width: 70%;
                 font-style: normal;
                 color: #000;
-                opacity: .6;
 
-                &[placeholder] {
+                &::-webkit-placeholder {
                     color: #FFF;
                     font-style: italic;
                 }
 
-                &:hover,
-                &:focus {
-                    opacity: 1;
+                &::-moz-placeholder {
+                    color: #FFF;
+                    font-style: italic;
+                }
+
+                &:-ms-placeholder {
+                    color: #FFF;
+                    font-style: italic;
                 }
             }
 
@@ -1089,14 +985,6 @@ header {
             top: 70px;
             left: 52%;
             width: 45%;
-
-            @include responsive(sd) {
-                position: relative;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
-
             label {top: 65px;}
 
             textarea {
@@ -1119,7 +1007,7 @@ header {
     }
 
     .submit {
-        @include typo-quick($font-size-p, $font-reg, $white-grey);
+        @include typo-quick($font-size-p, $font-reg, $grey-white);
         cursor: pointer;
         z-index: 250;
         height: 50px;
@@ -1129,13 +1017,9 @@ header {
         background-color: $grey;
         box-shadow: rgba(0, 0, 0, .5) -1px 2px 2px;
         border: 0;
-        letter-spacing: 1px;
-        transition: all 0.3s;
 
         &:hover {
             color: $white;
-            letter-spacing: 3px;
-            font-size: $font-size-p+.2;
         }
     }
 
@@ -1143,10 +1027,11 @@ header {
         z-index: 150;
         height: 0;
         width: 0;
+        opacity: .8;
         margin-top: 60px;
         margin-right: -25px;
         border-bottom: 25.5px solid transparent;
-        border-left: 25.5px solid $grey-white;
+        border-left: 25.5px solid $grey;
     }
 }
 
@@ -1155,25 +1040,15 @@ header {
     background-size: cover;    
     background-image: url('/images/map_3.jpg');
     background-position: center top;
-    height: 600px;
+    height: 500px;
     margin-top: -200px;
     margin-bottom: 150px;
-    box-shadow: rgba(0, 0, 0, .7) 2px 2px 10px;
-    
-    @include responsive(ld) {
-        height: 500px;
-    }
-
-    @include responsive(lp) {
-        margin-bottom: 400px;
-    }
 
     span {
         @include pattern($pattern-blue);
         width: 5px;
         margin-left: -2.5px;
         bottom: 150px;
-        top: 200px;
 
         svg {
             height: 18px;
@@ -1191,21 +1066,9 @@ header {
     position: fixed;
     bottom: 0;
 
-    @include responsive(lp) {
-        height: 400px;
-    }
-
     .wrapper {
         @include size();
         padding-top: 20px;
-
-        @include responsive(sd) {
-            width: 90%;
-        }
-
-        @include responsive(lp) {
-            width: 200px;
-        }
 
         .col3 {
             width: 30%;
@@ -1213,13 +1076,8 @@ header {
             position: relative;
             margin-left: 10px;
 
-            @include responsive(lp) {
-                float: none;
-                width: 100%;
-            }
-
             h2 {
-                @include typo-quick($font-size-li, $font-reg, $white);
+                font-size: $font-size-li;
                 text-decoration: none;
                 line-height: 30px;
                 position: relative;
@@ -1235,13 +1093,7 @@ header {
             .deco1 {width: 105px;}
 
             .deco2,
-            .deco3 {
-                width: 245px;
-
-                @include responsive(sd) {
-                    width: 100%;
-                }
-            }
+            .deco3 {width: 245px;}
 
             ul {
                 padding-top: 5px;
@@ -1249,7 +1101,7 @@ header {
             }
 
             li {
-                @include typo-quick($font-size-li, $font-reg, $white);
+                font-size: $font-size-li;
             }
 
             a {
@@ -1263,15 +1115,7 @@ header {
             }
         }
 
-        .mrL {
-            margin-left: 3%;
-
-            @include responsive(lp) {
-                margin-left: 10px;
-                margin-top: 10px;
-            }
-        }
-
+        .mrL {margin-left: 3%;}
         .col3::before {
             content: '';
             height: 100%;
