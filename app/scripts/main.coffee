@@ -8,7 +8,6 @@ $ ->
 #----Menu
 	responsiveMenuFtc = ->
 		if window.innerWidth > 480
-			console.log 'bigOne'
 			$('header .responsiveMenu').css display: 'none', opacity: 1
 			$('header li').css display: 'inline-block', opacity: 1
 
@@ -70,9 +69,7 @@ $ ->
 		$(window).unbind('scroll.Scrolling')
 		responsiveMenuFtc()
 
-
 #----Parallax
-
 	verifBig = false
 	verifSmall = false
 
@@ -83,7 +80,7 @@ $ ->
 		.setTween TweenMax.fromTo '.title', 0.5, top: '10%',
 			top: '80%'
 		.addTo controller
-		.addIndicators zindex: 50000, suffix: 'home'	
+		#.addIndicators zindex: 50000, suffix: 'home'	
 
 	# Citation
 	timeLineCitationTop = new TimelineMax
@@ -114,7 +111,7 @@ $ ->
 	sceneCitation = new ScrollScene duration: 400, triggerElement: '#home .bottom'
 		.setTween timeLineCitation
 		.addTo controller
-		.addIndicators zindex: 50000, suffix: 'citation'
+		#.addIndicators zindex: 50000, suffix: 'citation'
 
 	# About
 	timeLineAbout = new TimelineMax
@@ -133,7 +130,7 @@ $ ->
 	sceneAbout = new ScrollScene duration: 500, triggerElement: '#citation p'
 		.setTween timeLineAbout
 		.addTo controller
-		.addIndicators zindex: 50000, suffix: 'about'
+		#.addIndicators zindex: 50000, suffix: 'about'
 
 	# Competance
 	document.getElementById('competence').style.top = '-80px'
@@ -180,7 +177,7 @@ $ ->
 		sceneCompRespSvg1 = new ScrollScene duration: 300, triggerElement: '#competence'
 			.setTween timeLineCompRespSvg1
 			.addTo controller
-			.addIndicators zindex: 50000, suffix: 'competenceRespSVG1'
+			#.addIndicators zindex: 50000, suffix: 'competenceRespSVG1'
 
 		timeLineCompRespSvg2 = new TimelineMax
 		timeLineCompRespSvg2.from '#competence #prog', 1.4, marginLeft: '-70'
@@ -264,6 +261,7 @@ $ ->
 
 	$('header li a, #home .bottom').click (e) ->
 		e.preventDefault()
+		#--- if ($(@).attr('href'))  // Add contact fixed !
 		TweenMax.to window, 1,
 			scrollTo: 
 				y: ($($(@).attr('href')).position().top-50),
@@ -300,7 +298,7 @@ $ ->
 	      to: el.getAttribute("data-path-hover")
 
 	    el.addEventListener "mouseenter", ->
-	      console.log el + "  /////   " + s + "  /////   " + pathConfig
+	      # console.log el + "  /////   " + s + "  /////   " + pathConfig
 	      path.animate
 	        path: pathConfig.to
 	      , speed, easing
@@ -421,6 +419,3 @@ $ ->
 				else
 					$("#contact li textarea").css bg, checkTrue
 		false
-
-
-

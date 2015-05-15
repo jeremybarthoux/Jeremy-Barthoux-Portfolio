@@ -199,7 +199,6 @@ header {
                 width: 100%;
                 position: relative;
                 list-style: none;
-
             }
 
             li {
@@ -252,29 +251,6 @@ header {
                 }
             }
         }
-
-        /*.navigation {
-            height: 50px;
-            position: absolute;
-            top: 50%;
-            margin-top: -25px;
-            z-index: 80;
-
-            a{
-                height: 100%;
-                width: 40px;
-                position: absolute;
-                background-color: white;
-
-                &.prev {
-                    left: 0;
-                }
-
-                &.next {
-                    right: 0;
-                }
-            }
-        }*/
 
         .pagination {
             z-index: 80;
@@ -776,7 +752,7 @@ header {
     z-index: 200;
     height: 100%;
     border-bottom: 2px solid $white;
-    border-top: 5px solid #454545;
+    border-top: 2px solid $grey-black;
 
     .cptTxt {
         @include background-base();
@@ -833,9 +809,46 @@ header {
         }
     }
     
+    .upComptenu {
+        position: relative;
+        margin-top: -150px;
+    }
+
+    .project {
+        margin: auto;
+        position: relative;
+        width: 90%;
+        background-color: red;
+        margin-bottom: 50px;
+
+        .nav {
+            background-color: blue;
+
+            .sml,
+            .big {
+                height: 60px;
+                display: block;
+            }
+
+            .sml { 
+                margin-bottom: 20px;
+                margin-left: 8px;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            @include typo-home($font-size-h2, $font-reg, $white);
+        }
+
+        p {
+            padding: 20px 80px 20px 80px;
+            @include typo-quick($font-size-p, $font-reg, $white);
+        }
+    }
+
     .wrapper {
         margin: auto;
-        margin-top: -150px;
         padding-bottom: 70px;
         width: 90%;
 
@@ -864,6 +877,7 @@ header {
                 height: 500px;
                 background-image: url('images/projet/cirque.jpg');
                 background-size: cover;
+                overflow: hidden;
 
                 @include responsive(ld) {
                     height: 400px;
@@ -1153,7 +1167,7 @@ header {
 #map {
     z-index: 100;
     background-size: cover;    
-    background-image: url('/images/map_3.jpg');
+    background-image: url('/images/map.jpg');
     background-position: center top;
     height: 600px;
     margin-top: -200px;
