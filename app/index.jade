@@ -3,6 +3,7 @@ html
   head
     meta(charset='UTF-8')
     title Jeremy Barthoux
+    link(rel="shortcut icon" type="image/x-icon" href='images/favicon.ico' )
     link(href='http://fonts.googleapis.com/css?family=Quicksand:400,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='styles/main.css', type='text/css')
   body
@@ -17,31 +18,20 @@ html
       img(src='images/logo.svg' alt='Logo Jeremy Barthoux')
       p.responsiveMenu Menu
     section#home
-      .slider
+      .silder
         .loader
         .wrapper
           ul
-            li
+            li(style='background-image:url("images/projet/tourmaline_home.jpg");')
               a(href='#project1').wrapperTxt
-                h3 L'Hotel du Mur
-                p Site web &amp Identité Graphique
-            li
+                h3 La Tourmaline
+                p Web Design &amp Développement
+            li(style='background-image:url("images/projet/wiseapp_home.jpg");')
               a(href='#project2').wrapperTxt
-                h3 22222222222
-                p 222222222222222222
-            li
-              a(href='#project3').wrapperTxt
-                h3 3333333333
-                p 333333333333333333
-            li
-              a(href='#project5').wrapperTxt
-                h3 444444
-                p 444444444444444
-            li
-              a(href='#project7').wrapperTxt
-                h3 55555555555555
-                p S555555555555555
+                h3 The WiseApp
+                p Application Design
         .pagination
+
       img.title(src='images/title_home.svg' alt='Jeremy Barthoux : Graphiste et Developpeur')
       a(href='#citation').bottom
         p Scroll Down
@@ -71,7 +61,7 @@ html
             circle(fill='#FFFFFF', cx='10', cy='10', r='5.7')
         p.abs Graphiste et développeur, je façonne mes projets du papier au numérique. Progressant dans plusieurs domaines telles le web design, le développement web, le design graphique et les identités visuelles. Mon objectif est de develloper des idées afin d’embelire et de simplifier le quotidien des citoyens.
             br
-            | Passionné par l’Art et les Mathématiques, l’émotionelle et le rationelle, les courbes et les lignes droites, je travaille à allier ces deux grands domaines pour en faire émerger des créations originals.
+            | Passionné par l’Art et les Mathématiques, l’émotionelle et le rationelle, les courbes et les angles, je travaille à allier ces deux grands domaines pour en faire émerger des créations originals.
     section#competence
       .cptTxt
         span.topLine
@@ -101,108 +91,95 @@ html
             li CMS
     section#portfolio
       .cptTxt
-        svg.fleche(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 100 100')
-          polygon(fill='#FFFFFF', points='7.2,25.3 50,0.6 92.8,25.3 92.8,74.7 50,99.4 7.2,74.7 ')
-          polygon.flecheIcn(fill='#252525', points='53.4,50.7 53.4,14.8 46.6,14.8 46.6,50.7 32.9,42.8 32.9,49.3 50,59.2 67.1,49.3 67.1,42.8 ')
+        a(href='#portfolio')
+          svg.fleche(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 100 100')
+            polygon(fill='#FFFFFF', points='7.2,25.3 50,0.6 92.8,25.3 92.8,74.7 50,99.4 7.2,74.7 ')
+            polygon.flecheIcn(fill='#252525', points='53.4,50.7 53.4,14.8 46.6,14.8 46.6,50.7 32.9,42.8 32.9,49.3 50,59.2 67.1,49.3 67.1,42.8 ')
         .overflow
           span.topLine
           h2 PORTFOLIO
           span.bottomLine
       .upComptenu
-      .project
-        .nav.abs.right
-          img.sml(src='images/navProject_next.svg')
-          img.big(src='images/navProject_cross.svg')
-        .nav.abs.left
-          img.sml(src='images/navProject_prev.svg')
-          img.big(src='images/navProject_bottom.svg')
-        
-        h2 The Title Of project
-        p Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
-        img(src='images/projet/presentationApp3.jpg')
+      img.loader(src='images/loader.gif')
+      .project#projectView
+        .nav.abs.right#projectViewNavRight
+          include ./include/navProject_next.jade
+          include ./include/navProject_cross.jade
+        .nav.abs.left#projectViewNavLeft
+          include ./include/navProject_prev.jade
+          a(href='#projectList')
+            include ./include/navProject_bottom.jade
+        .wrap
+          h2 
+          p
 
-      .wrapper
+      .wrapper#projectList
         ul
+          li#project0
+            .wrap
+              .img(style='background-image:url("images/projet/tourmaline_min.jpg");')
+              .overflow
+              .txt
+                h2 La Tourmaline
+                p Web Design &amp Développement
+                p.desc Parti d'un site web existant l'objectif a été de clarifier l'information et de refaire le desin. Je vous pouvez accéder au site web a(href='www.tourmaline-verte.com') ICI.
           li#project1
-            a(href="#", data-path-hover="M-0.067-0.107l100.136,0v32.201L84.167,17.666L50,11l-33.167,7.333L-0.067,32.094V-0.107z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M-0.067-0.107l100.136,0v33.201L84.167,54L50,69.833L16.833,57.166L-0.067,33.094V-0.107z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li.width#project2
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li.height.width#project3
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            .wrap
+              .img(style='background-image:url("images/projet/wiseapp_min.jpg");')
+              .overflow
+              .txt
+                h2 TeamWise
+                p Application Design
+                p.desc Samantha Oss-Pegorar est une étudiante de l'université hotelière genvoise, pour finaliser son année, elle a effecté un stage dans la compagnie SSP qui detiens des restaurants, cafés et bars dans les airoport suisse. TeamWise est une carte fidélité,  mise en place par l'entreprise,  pour permettre au employer des airoport de bénéficier de réduction dans les commerces du groupe. On lui a demander de construire un projet pour améliorer les ventes. Nous avons alors discuter d'une solution d'application pour premettre l'extension de la carte TeamWise et la facilitée d'accée au réduction pour les menbres. Pour faciliter l'accée au points de restauration une carte interactive a était ajouter, ainssi que la validiter de l'ouverture en temps réel. Vous trouverais ci-dessous une presentation du travaille effectuer.
+
+          li#project2
+            .wrap
+              .img(style='background-image:url("images/projet/ipve_min.jpg");')
+              .overflow
+              .txt
+                h2 Julien Brun
+                p Tampon encreur
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+          li#project3
+            .wrap
+              .img(style='background-image:url("images/projet/studentstart_min.jpg");')
+              .overflow
+              .txt
+                h2 Student Start
+                p Affiche &amp Carte membre
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
           li#project4
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li.height#project5
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li.height#project6
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li.height.width#project7
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
-          li#project8
-            a(href="#", data-path-hover="M100,18.179H0V0h100V18.179z")
-              figure
-                .img
-                svg(viewbox='0 0 100 100', preserveAspectRatio="none")
-                  path(d="M100,83.07L0,48.077V0h100V83.07z")
-                figcaption
-                  h2 1111
-                  p real isatio nvzvzev Veuillez vz e evzz
-                  button view
+            .wrap
+              .img(style='background-image:url("images/projet/insentio_min.jpg");')
+              .overflow
+              .txt
+                h2 Insentio
+                p Web Design &amp Développement
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+          li#project5
+            .wrap
+              .img(style='background-image:url("images/projet/combistar_min.jpg");')
+              .overflow
+              .txt
+                h2 Combistar
+                p Identité Visuelle
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+          li#project6
+            .wrap
+              .img(style='background-image:url("images/projet/theline_min.jpg");')
+              .overflow
+              .txt
+                h2 The Line
+                p Projet d'agence de comm'
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+          li#project7
+            .wrap
+              .img(style='background-image:url("images/projet/annecymag_min.jpg");')
+              .overflow
+              .txt
+                h2 Annecy Mag
+                p Magasine
+                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.      
     section#cv
       svg.absL50(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 215.1 185.3')
         path#backCv(opacity='0.5', fill='#FFFFFF', d='M161.2 185.3h-107L0.8 92.7L54.3 0h107l53.5 92.7L161.2 185.3z M60.1 175.1h95.2 L203 92.7l-47.6-82.5H60.1L12.5 92.7L60.1 175.1z')
@@ -280,6 +257,6 @@ html
     script(type='text/javascript', src='scripts/vendor/isotope.min.js')
     script(type='text/javascript', src='scripts/vendor/isotope.packery.min.js')
     script(type='text/javascript', src='scripts/vendor/extra.slider.js')
-    script(type='text/javascript', src='scripts/vendor/snap.svg.min.js')
     script(type='text/javascript', src='scripts/vendor/load.slider.js')
     script(type='text/javascript', src='scripts/main.js')
+    <?php include 'php/buildProject.php' ?>

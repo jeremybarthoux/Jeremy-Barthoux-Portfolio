@@ -7,7 +7,7 @@ $ ->
 
 #----Menu
 	responsiveMenuFtc = ->
-		if window.innerWidth > 480
+		if window.innerWidth > 550
 			$('header .responsiveMenu').css display: 'none', opacity: 1
 			$('header li').css display: 'inline-block', opacity: 1
 
@@ -17,7 +17,7 @@ $ ->
 					positionHome = $('#home').position().top-100
 					positionAbout = $('#about').position().top-100
 					positionCompetence = $('#competence').position().top-100
-					positionPortfolio = $('#portfolio').position().top-100
+					positionPortfolio = $('#portfolio').position().top-80-100
 					positionContact = $('#cv').position().top-100
 
 					if scrollTop >= positionHome && scrollTop < positionAbout
@@ -44,7 +44,7 @@ $ ->
 						size = ($('header li:eq(4)').width())-50
 						left = ($('header li:eq(0)').width())+($('header li:eq(1)').width())+($('header li:eq(2)').width())+($('header li:eq(3)').width())+41
 						TweenMax.to 'header span', 1.5, width: size, left: left
-		if window.innerWidth < 480
+		if window.innerWidth < 550
 			$('header .responsiveMenu').css display: 'block', opacity: 1
 			$('header li').css display: 'none', opacity: 0
 
@@ -82,9 +82,9 @@ $ ->
 		.addTo controller
 		#.addIndicators zindex: 50000, suffix: 'home'	
 
-	# Citation
+	# Citation 
 	timeLineCitationTop = new TimelineMax
-	timeLineCitationTop.fromTo '#citation .decoWrapperTop', 1.5, 
+	timeLineCitationTop.fromTo '#citation .decoWrapperTop', 1, 
 		rotation: '45', ease: Linear.easeNone,
 			rotation: '0', ease: Linear.easeNone
 	timeLineCitationTop.fromTo '#citation .decoWrapperTop', 0.7, 
@@ -92,7 +92,7 @@ $ ->
 			top: '0', ease: Linear.easeNone
 
 	timeLineCitationBot = new TimelineMax
-	timeLineCitationBot.fromTo '#citation .decoWrapperBottom', 1.5, 
+	timeLineCitationBot.fromTo '#citation .decoWrapperBottom', 1, 
 		rotation: '-45', ease: Linear.easeNone,
 			rotation: '0', ease: Linear.easeNone
 	timeLineCitationBot.fromTo '#citation .decoWrapperBottom', 0.7, 
@@ -102,7 +102,7 @@ $ ->
 	tweenCitationTxt = TweenMax.fromTo '#citation .wrapper p', 1,
 	opacity: '0',
 		opacity: '1'
-	'-=0.4'
+	'-=0.5'
 
 	timeLineCitation = new TimelineMax
 	timeLineCitation.add [timeLineCitationBot, timeLineCitationTop]
@@ -125,40 +125,40 @@ $ ->
 	timeLineAbout.fromTo '#about .wrapper p', 0.5,
 			opacity: '0',  ease: Linear.easeNone,
 				opacity: '1',  ease: Linear.easeNone,
-			'-=0.1'
+			'-=0.2'
 
-	sceneAbout = new ScrollScene duration: 500, triggerElement: '#citation p'
+	sceneAbout = new ScrollScene offset: -100, duration: 500, triggerElement: '#citation p'
 		.setTween timeLineAbout
 		.addTo controller
 		#.addIndicators zindex: 50000, suffix: 'about'
 
 	# Competance
 	document.getElementById('competence').style.top = '-80px'
-	if window.innerWidth > 1340
+	if window.innerWidth > 979
 		$('#competence #prog, #competence .floatLeft svg').css marginLeft: '-100px'
 		$('#competence .floatLeft h2, #competence .floatRight h2').css opacity: '1'
+		$('#competence #inGraph').css opacity: '0'
 
 		timeLineCompSvg1 = new TimelineMax
-		timeLineCompSvg1.from '#competence #bgGraph', 0.7, opacity: '0',  ease: Linear.easeNone
-		timeLineCompSvg1.from '#competence #inGraph', 0.5, delay: -0.4, opacity: '0',  ease: Linear.easeNone
-		timeLineCompSvg1.from '#competence #bgGraph', 0.8, delay: -0.6, rotation:"360", transformOrigin:"50% 50%"
+		timeLineCompSvg1.from '#competence .floatLeft', .5, left: '-100%',  ease: Linear.easeNone
+		timeLineCompSvg1.from '#competence #bgGraph', .6, delay: -.2, opacity: '0',  ease: Linear.easeNone
+		timeLineCompSvg1.to '#competence #inGraph', .5, delay: -.4, opacity: '1',  ease: Linear.easeNone
+		timeLineCompSvg1.from '#competence #bgGraph', .6, delay: -.6, rotation:"360", transformOrigin:"50% 50%"
 
 		timeLineCompSvg2 = new TimelineMax
-		timeLineCompSvg2.from '#competence #bgProg,#competence #inProg', 0.7, opacity: '0',  ease: Linear.easeNone
-		timeLineCompSvg2.from '#competence #bgProg .leftProg', 0.7, delay: -0.6, transform: 'translate(10px,0)'
-		timeLineCompSvg2.from '#competence #bgProg .rightProg', 0.7, delay: -0.6, transform: 'translate(-10px,0)'
-		timeLineCompSvg2.staggerFrom '#competence #inProg .nb', 0.8, opacity: '0', 0.1
-
-		tweenComp1 = TweenMax.from '#competence .floatLeft', 1, left: '-100%',  ease: Linear.easeNone
-		tweenComp2 = TweenMax.from '#competence .floatRight', 1, right: '-100%',  ease: Linear.easeNone
+		timeLineCompSvg2.from '#competence .floatRight', .5, right: '-100%',  ease: Linear.easeNone
+		timeLineCompSvg2.from '#competence #bgProg,#competence #inProg', .4, delay: -.2, opacity: '0',  ease: Linear.easeNone
+		timeLineCompSvg2.from '#competence #bgProg .leftProg', .5, delay: -.4, transform: 'translate(10px,0)'
+		timeLineCompSvg2.from '#competence #bgProg .rightProg', .5, delay: -.4, transform: 'translate(-10px,0)'
+		timeLineCompSvg2.staggerFrom '#competence #inProg .nb', .7, opacity: '0', 0.08, '-=0.5'
 
 		timeLineComp = new TimelineMax
-		timeLineComp.add [tweenComp1, tweenComp2]
-				.add [timeLineCompSvg1, timeLineCompSvg2]	
+		timeLineComp.add [timeLineCompSvg1, timeLineCompSvg2]	
 
-		sceneComp = new ScrollScene duration: 1000, triggerElement: '#about'
+		sceneComp = new ScrollScene offset: -100, duration: 800, triggerElement: '#competence'
 			.setTween timeLineComp
 			.addTo controller
+			#.addIndicators zindex: 50000, suffix: 'competance'
 
 		verifBig = true
 	else
@@ -193,35 +193,38 @@ $ ->
 
 		# Competance Fix Anim
 	$(window).resize ->
-		if window.innerWidth > 1340
+		if window.innerWidth > 979
 			if verifSmall
 				verifSmall = false
 				controller.removeScene [sceneCompRespSvg2, sceneCompRespSvg1]
 
 				$('#competence #prog, #competence .floatLeft svg').css marginLeft: '-100px'
 				$('#competence .floatLeft h2, #competence .floatRight h2').css opacity: '1'
+				$('#competence #inGraph').css opacity: '0'
+
+				tweenComp1 = TweenMax.from '#competence .floatLeft', .1, left: '-100%',  ease: Linear.easeNone
+				tweenComp2 = TweenMax.from '#competence .floatRight', .1, right: '-100%',  ease: Linear.easeNone
 
 				timeLineCompSvg1 = new TimelineMax
-				timeLineCompSvg1.from '#competence #bgGraph', 0.7, opacity: '0',  ease: Linear.easeNone
-				timeLineCompSvg1.from '#competence #inGraph', 0.5, delay: -0.4, opacity: '0',  ease: Linear.easeNone
-				timeLineCompSvg1.from '#competence #bgGraph', 0.8, delay: -0.6, rotation:"360", transformOrigin:"50% 50%"
+				timeLineCompSvg1.from '#competence #bgGraph', .6, opacity: '0',  ease: Linear.easeNone
+				timeLineCompSvg1.to '#competence #inGraph', .5, delay: -.4, opacity: '1',  ease: Linear.easeNone
+				timeLineCompSvg1.from '#competence #bgGraph', .8, delay: -.6, rotation:"360", transformOrigin:"50% 50%"
 
 				timeLineCompSvg2 = new TimelineMax
-				timeLineCompSvg2.from '#competence #bgProg,#competence #inProg', 0.7, opacity: '0',  ease: Linear.easeNone
-				timeLineCompSvg2.from '#competence #bgProg .leftProg', 0.7, delay: -0.6, transform: 'translate(10px,0)'
-				timeLineCompSvg2.from '#competence #bgProg .rightProg', 0.7, delay: -0.6, transform: 'translate(-10px,0)'
-				timeLineCompSvg2.staggerFrom '#competence #inProg .nb', 0.8, opacity: '0', 0.1
-
-				tweenComp1 = TweenMax.from '#competence .floatLeft', 1, left: '-100%',  ease: Linear.easeNone
-				tweenComp2 = TweenMax.from '#competence .floatRight', 1, right: '-100%',  ease: Linear.easeNone
+				timeLineCompSvg2.from '#competence #bgProg,#competence #inProg', .6, opacity: '0',  ease: Linear.easeNone
+				timeLineCompSvg2.from '#competence #bgProg .leftProg', .5, delay: -.6, transform: 'translate(10px,0)'
+				timeLineCompSvg2.from '#competence #bgProg .rightProg', .5, delay: -.6, transform: 'translate(-10px,0)'
+				timeLineCompSvg2.staggerFrom '#competence #inProg .nb', .7, opacity: '0', 0.1, '-=0.5'
 
 				timeLineComp = new TimelineMax
 				timeLineComp.add [tweenComp1, tweenComp2]
 						.add [timeLineCompSvg1, timeLineCompSvg2]	
 
-				sceneComp = new ScrollScene duration: 1000, triggerElement: '#about'
+				sceneComp = new ScrollScene offset: -100, duration: 800, triggerElement: '#competence'
 					.setTween timeLineComp
 					.addTo controller
+					#.addIndicators zindex: 50000, suffix: 'competance'
+
 				verifBig = true
 		else 
 			if verifBig
@@ -258,20 +261,21 @@ $ ->
 				verifSmall = true
 
 #----Link
-
-	$('header li a, #home .bottom').click (e) ->
+	$('a').click (e) ->
 		e.preventDefault()
-		#--- if ($(@).attr('href'))  // Add contact fixed !
+
+		if ($(@).attr('href') == '#about' && $(window).scrollTop() >= 0 && $(window).scrollTop() <= $('#about').position().top-100)
+			y = ($('#citation').offset().top) + $('#citation').height() - 100
+
+		else if ($(@).attr('href') == '#portfolio')
+			y = ($('#portfolio').offset().top) - 80 - 50
+
+		else
+			y = $($(@).attr('href')).offset().top - 50
+
 		TweenMax.to window, 1,
 			scrollTo: 
-				y: ($($(@).attr('href')).position().top-50),
-			ease:Power2.easeOut
-
-	$('#home .wrapper a').click (e) ->
-		e.preventDefault()
-		TweenMax.to window, 1,
-			scrollTo:
-				y: ($($(@).attr('href')).position().top)+($('#portfolio').position().top),
+				y: y,
 			ease:Power2.easeOut
 
 #----Hover
@@ -281,35 +285,114 @@ $ ->
 		-> selector = $($(@).find('.flecheIcn')); TweenMax.to selector, 0.5, y:0
 	)
 
+	$('#portfolio .wrapper li .wrap').hover(
+		-> TweenMax.to $($(@).find('.txt')), 0.4, marginTop: 0; TweenMax.to $($(@).find('.txt')), 0.3, delay: 0.15, opacity:1; TweenMax.to $($(@).find('.overflow')), 0.2, opacity:0.8; TweenMax.to $($(@).find('.img')), 0.2, 'filter' : 'blur(3px)',
+		-> TweenMax.to $($(@).find('.txt')), 0.9, marginTop: '-100%'; TweenMax.to $($(@).find('.txt')), 0.6, opacity:0; TweenMax.to $($(@).find('.overflow')), 1, opacity:0; TweenMax.to $($(@).find('.img')), 1.5, 'filter' : 'blur(0px)'
+	)
+
 #----Portfolio
 
 	$('#portfolio .wrapper').isotope 
 		itemSelector: 'li',
 		layoutMode: 'packery'
 
-	initSvg = ->
-	  speed = 250
-	  easing = mina.easeinout
-	  [].slice.call(document.querySelectorAll("#portfolio .wrapper a")).forEach (el) ->
-	    s = Snap(el.querySelector("svg"))
-	    path = s.select("path")
-	    pathConfig =
-	      from: path.attr("d")
-	      to: el.getAttribute("data-path-hover")
+	$('#portfolio .wrapper li .wrap').click ->
+	  selector = $(this).parent().attr('id')
+	  index = selector.replace(/[a-zA-Z\s]{7}/, '')
+	  if projectOpen == true
+	    changeProject index
+	  else
+	    project index
 
-	    el.addEventListener "mouseenter", ->
-	      # console.log el + "  /////   " + s + "  /////   " + pathConfig
-	      path.animate
-	        path: pathConfig.to
-	      , speed, easing
-	      return
+	$('#projectView .right svg.big').click ->
+	  exitProject()
 
-	    el.addEventListener "mouseleave", ->
-	      path.animate
-	        path: pathConfig.from
-	      , speed, easing
+	$('#projectView .right svg.sml').click ->
+	  `var index`
+	  if Number(lastIndex) == 6
+	    index = 0
+	  else
+	    index = Number(lastIndex) + 1
+	  changeProject index
 
-	initSvg()
+	$('#projectView .left svg.sml').click ->
+	  `var index`
+	  if Number(lastIndex) == 0
+	    index = 6
+	  else
+	    index = Number(lastIndex) - 1
+	  changeProject index
+
+	projectOpen = false
+	projectFirstOpen = true
+	lastIndex = ''
+
+	project = (index) ->
+	  projectOpen = true
+	  TweenMax.to '#portfolio .loader', .2, opacity: 1
+
+	  if projectFirstOpen == true
+	    TweenMax.to window, .2,
+	      scrollTo: y: $('#portfolio').offset().top - 50
+	      ease: Power2.easeOut
+
+	  projectFirstOpen = false
+	  $('#portfolio #projectView').css 'display', 'block'
+	  $('#projectView h2').html $('#portfolio #project' + index + ' .txt h2').html()
+	  $('#projectView p').html $('#portfolio #project' + index + ' .txt .desc').html()
+
+	  $.getJSON 'php/box.php?list=' + index, (data) ->
+	    lastIndex = index
+	    length = data.length
+	    i = 0
+	    while i < length
+	      $('#projectView .wrap').append $('<img class=\'present\' />').attr('src', data[i])
+	      i++
+	    if i == length
+	      TweenMax.to '#portfolio .loader', .2, opacity: 0
+	      TweenMax.to '#projectView', .5,
+	        opacity: 1
+	        onComplete:
+		        callback = ->
+		          durationTrigger = $('#projectView .wrap').height() - $('#projectView #projectViewNavLeft').height()
+		          sceneFollowNavR = new ScrollScene(
+		            duration: durationTrigger
+		            triggerElement: '#projectView').setPin('#projectViewNavRight', pushFollowers: true).addTo(controller)
+		          sceneFollowNavL = new ScrollScene(
+		            duration: durationTrigger
+		            triggerElement: '#projectView').setPin('#projectViewNavLeft', pushFollowers: true).addTo(controller)
+
+	closeProject = ->
+	  projectOpen = false
+	  TweenMax.to window, .5,
+	    scrollTo: y: $('#portfolio').offset().top - 50
+	    ease: Power2.easeOut
+	    onComplete:
+		    callback = ->
+		      TweenMax.to '#projectView', .5,
+		        opacity: 0
+		        onComplete:
+			        callback = ->
+			          $('#projectView img.present').remove()
+			          controller.removeScene [
+			            sceneFollowNavR
+			            sceneFollowNavL
+			          ]
+			          sceneFollowNavR.destroy()
+			          sceneFollowNavL.destroy()
+			          controller.update true
+
+
+	changeProject = (index) ->
+	  closeProject()
+	  setTimeout (->
+	    project index
+	  ), 1000
+
+	exitProject = ->
+	  closeProject()
+	  projectFirstOpen = true
+	  $('#portfolio .project').css 'display', 'none'
 
 #----Formulaire
 

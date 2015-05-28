@@ -15,9 +15,9 @@ $grey: #252525;
 $grey-black: #161616;
 $grey-white: #3b3b3b;
 
-$pattern-white: url('/images/foil.png');
-$pattern-blue: url('/images/pattern_bis.png');
-$pattern-black: url('/images/textured_az.jpg');
+$pattern-white: url('images/foil.png');
+$pattern-blue: url('images/pattern_bis.png');
+$pattern-black: url('images/textured_az.jpg');
 @mixin pattern($pattern) {background: $pattern repeat;}
 @mixin background-base() {background-size: 100%; background-repeat: no-repeat; background-position: center center;}
 
@@ -62,7 +62,9 @@ $font-size-li: 1em;
     } @else if $media == lp {
         @media only screen and (max-width: 767px) { @content; }
     } @else if $media == sp {
-        @media only screen and (max-width: 480px) { @content; }
+        @media only screen and (max-width: 550px) { @content; }
+    } @else if $media == fixedOverflow {
+        @media only screen and (max-width: 450px) { @content; }
     }
 }
 
@@ -80,6 +82,11 @@ body {
     height: 100%;
     overflow-x: hidden;
     widows: 100%;
+    min-width: 450px;
+
+    @include responsive(fixedOverflow) {
+        overflow-x: visible;
+    }
 }
 
 .abs {position: absolute;}
@@ -185,9 +192,12 @@ header {
     z-index: 0;
     background-color: $grey;
 
-    .slider {
+    .silder {
         height: 100%;
         width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
 
         .wrapper {
             z-index: 30;
@@ -209,45 +219,26 @@ header {
                 height: 100%;
                 width: 100%;
                 background-size: cover;
-                background-position: fixed;
-
-                &:nth-child(1) {
-                    background-image: url('/images/bg_1.jpg');
-                }
-
-                &:nth-child(2) {
-                    background-image: url('/images/bg_2.jpg');
-                }
-
-                &:nth-child(3) {
-                    background-image: url('/images/bg_1_2.jpg');
-                }
-
-                &:nth-child(4) {
-                    background-image: url('/images/bg_2_2.jpg');
-                }
-
-                &:nth-child(5) {
-                    background-image: url('/images/bg_1_2.jpg');
-                }
+                background-position: center center;
             }
 
             .wrapperTxt {
                 position: absolute;
-                top: 100px;
+                top: 50px;
                 right: -100%;
-                background-color: $grey;
+                background-color: rgba(0,0,0,0.5);
 
                 h3 {
                     @include typo-home($font-size-h2, $font-reg, $white);
-                    display: inline-block;
-                    padding: 20px;
+                    display: block;
+                    padding: 40px 20px 10px 20px;
+                    text-align: center;
                 }
 
                 p {
                     @include typo-quick($font-size-p, $font-big, $white);
-                    display: inline-block;
-                    padding-right: 20px;
+                    display: block;
+                    padding: 10px 20px 20px 20px;
                 }
             }
         }
@@ -282,11 +273,11 @@ header {
             display: block;
             height: 3px;
             width: 100%;
-            background-color: $grey;
+            background-color: $blue; //$grey;
             position: absolute;
             bottom: 0;
             left: 0;
-            z-index: 50;
+            z-index: 100;
         }
     }
 
@@ -392,6 +383,7 @@ header {
         position: absolute;
         left: 50%;
         top: 50%;
+        background-color: transparent;
 
         .responsiveBreak {
             display: none;
@@ -419,7 +411,7 @@ header {
 
         .img {
             @include background-base();
-            background-image: url('/images/nav_bg_grey.svg');
+            background-image: url('images/nav_bg_grey.svg');
             fill: $grey;
             left: 50%;
             $citation-img-height: 20px;            
@@ -444,6 +436,7 @@ header {
         .decoWrapperBottom{
             position: absolute;
             left: 50%;
+            background: transparent;
         }
     }
 }
@@ -545,10 +538,10 @@ header {
         @include background-base();
         width: 650px;
         height: 100%;
-        background-image: url('/images/me.png');
+        background-image: url('../images/me.png');
         
         @include responsive(nd) {
-            background-image: url('/images/me_resp.png');
+            background-image: url('../images/me_resp.png');
             width: 250px;
             height: 300px;
             position: relative;
@@ -561,8 +554,9 @@ header {
     @include pattern($pattern-white);
     z-index: 100;
     height: 1100px;
+    overflow: hidden;
 
-    @include responsive(iid) {
+    @include responsive(sd) {
         height: 100%;
     }
 
@@ -574,7 +568,7 @@ header {
 
     .cptTxt {
         @include background-base();
-        background-image: url('/images/triangle_shadows.svg');
+        background-image: url('images/triangle_shadows.svg');
         height: 210px;
         width: 450px;
         margin: auto;
@@ -608,7 +602,7 @@ header {
         @include size();
         height: 100%;
 
-        @include responsive(iid) {
+        @include responsive(sd) {
             width: 450px;
             padding-bottom: 250px;
         }
@@ -620,12 +614,12 @@ header {
             height: 720px;
             width: 436px;
             position: relative;
-            background-image: url('/images/competence_bg.svg');
+            background-image: url('images/competence_bg.svg');
 
-            @include responsive(iid) {
+            @include responsive(sd) {
                 height: 650px;
                 width: 510px;
-                background-image: url('/images/competence_bg_responsive.svg');
+                background-image: url('images/competence_bg_responsive.svg');
 
                 #bgGraph,
                 #inProg,
@@ -644,7 +638,7 @@ header {
                 opacity: 1;
                 margin-top: 290px;
 
-                @include responsive(iid) {
+                @include responsive(sd) {
                     margin-top: 0;
                     padding-top: 190px;
                 }
@@ -658,7 +652,7 @@ header {
                 margin-top: 50px;
                 margin-left: 60px;
 
-                @include responsive(iid) {
+                @include responsive(sd) {
                     margin-left: 55px;
                     text-align: center;
                 }             
@@ -684,7 +678,7 @@ header {
                 width: 21.8px;
                 display: none;
 
-                @include responsive(iid) {
+                @include responsive(sd) {
                     display: block;
                 }
             }
@@ -693,7 +687,7 @@ header {
                 float: left;
                 margin-left: -20px;
 
-                @include responsive(iid) {
+                @include responsive(sd) {
                     float: none;
                     margin: auto;
                     margin-top: -50px;
@@ -701,7 +695,7 @@ header {
                 }
 
                 svg {
-                    @include responsive(iid) {
+                    @include responsive(sd) {
                         width: 135px;
                         margin-left: 60px;
                         top: 126px;
@@ -709,7 +703,7 @@ header {
                 }
 
                 span {
-                    @include responsive(iid) {
+                    @include responsive(sd) {
                         width: 210px;
                         margin-left: 160px;
                     }
@@ -720,7 +714,7 @@ header {
                 float: right;
                 margin-right: -20px;
 
-                @include responsive(iid) {
+                @include responsive(sd) {
                     float: none;
                     margin: auto;
                     margin-top: -50px;
@@ -728,7 +722,7 @@ header {
                 }
 
                 svg {
-                    @include responsive(iid) {
+                    @include responsive(sd) {
                         width: 100px;
                         margin-left: 70px;
                         top: 155px;
@@ -736,7 +730,7 @@ header {
                 }
 
                 span {
-                    @include responsive(iid) {
+                    @include responsive(sd) {
                         width: 285px;
                         margin-top: 9px;
                         margin-left: 108px;
@@ -758,7 +752,7 @@ header {
         @include background-base();
         height: 210px;
         width: 450px;
-        background-image: url('/images/triangle_shadows_2.svg');
+        background-image: url('images/triangle_shadows_2.svg');
         margin: auto;
         position: relative;
         top: -210px;
@@ -814,36 +808,87 @@ header {
         margin-top: -150px;
     }
 
+    .loader {
+        position: absolute;
+        left: 50%;
+        margin-left: -80px;
+        top: 85px;
+        opacity: 0;
+    }
+
     .project {
+        display: none;
         margin: auto;
         position: relative;
         width: 90%;
-        background-color: red;
         margin-bottom: 50px;
 
         .nav {
-            background-color: blue;
+            .right {
+                transform: translateX(-100%);
+            }
 
             .sml,
             .big {
                 height: 60px;
                 display: block;
+                cursor: pointer;
+
+                @include responsive(lp) {
+                    height: 40px;
+                }
+
+                &:hover {
+                    path {
+                        fill: $grey-black;
+                    }                    
+                }
             }
 
             .sml { 
                 margin-bottom: 20px;
                 margin-left: 8px;
+
+                @include responsive(lp) {
+                    margin-left: 5px;
+                }
             }
         }
 
         h2 {
+            padding: 0 80px 0 80px;
             text-align: center;
-            @include typo-home($font-size-h2, $font-reg, $white);
+            @include typo-quick($font-size-h1, $font-reg, $white);
         }
 
         p {
-            padding: 20px 80px 20px 80px;
-            @include typo-quick($font-size-p, $font-reg, $white);
+            padding: 20px 80px 50px 80px;
+            @include typo-quick($font-size-p, $font-big, $white);
+
+            @include responsive(nd) {
+                padding: 20px 60px 20px 60px;
+            }
+
+            @include responsive(lp) {
+                padding: 20px 40px 20px 40px;
+            }
+        }
+
+        img.present {
+            margin: auto;
+            display: block;
+            width: 950px;
+            box-sizing: border-box;
+            padding: 0;
+
+            @include responsive(nd) {
+                width: 100%;
+                padding: 0 60px 0 60px;
+            }
+
+            @include responsive(lp) {
+                padding: 0 40px 0 40px;
+            }
         }
     }
 
@@ -875,8 +920,6 @@ header {
                 position: relative;
                 width: 25%;
                 height: 500px;
-                background-image: url('images/projet/cirque.jpg');
-                background-size: cover;
                 overflow: hidden;
 
                 @include responsive(ld) {
@@ -933,35 +976,66 @@ header {
                         height: 300px;
                     }
                 }
-            }
 
-            a{
-                height: 100%;
-                width: 100%;
-                display: block;
-            }
+                .wrap {
+                    height: 90%;
+                    width: 90%;
+                    margin-left: 5%;
+                    margin-top: 5%;
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                }
 
-            .txt {
-                width: 50px;//200px;
-                height: 100%;
-                font-size: 21px;
-                overflow: hidden;
-                
-                .wrapperTxt {
-                    box-sizing: border-box;
-                    padding: 10px;
+                .img {
                     width: 100%;
-                    border-top: 2px solid $white;
-                    margin-top: 30px;
+                    height: 100%;
+                    display: block;
+                    position: relative;
+                    background-size: cover;
+                    background-position: center center;
+                    filter: blur(0px);
                 }
 
-                h2 {
-                    @include typo-quick($font-size-h2, $font-reg, $white);
+                .overflow {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: radial-gradient(rgba(1,1,1,.9) 0%, rgba(1,1,1,.8) 50%, rgba(1,1,1,.3) 100%);
+                    opacity: 0;
                 }
 
-                h3 {
-                    @include typo-quick($font-size-li, $font-reg, $white);
-                }   
+                .txt {
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    font-size: 21px;
+                    box-sizing: border-box;
+                    padding: 20px;
+                    border: 2px 0 0 0 solid $white;
+                    transform: translate(-50%, -50%);
+                    opacity: 0;
+                    margin-top: -100%;
+
+                    h2 {
+                        @include typo-quick($font-size-h1, $font-reg, $white);
+                        text-align: center;
+                    }
+
+                    p {
+                        @include typo-quick($font-size-li, $font-big, $white);
+                        padding-top: 10px;
+                        text-align: center;
+                    }
+
+                    .desc {
+                        display: none;
+                    }  
+                }
             }
         }
     }
@@ -972,7 +1046,7 @@ header {
     z-index: 100;
     height: 800px;
     background-size: cover;
-    background-image: url('/images/bg_2_fixed.jpg');
+    background-image: url('../images/bg_2_fixed.jpg');
     background-attachment: fixed;
     $top-svg:35%;
     $height-svg: 185px;
@@ -1167,7 +1241,7 @@ header {
 #map {
     z-index: 100;
     background-size: cover;    
-    background-image: url('/images/map.jpg');
+    background-image: url('../images/map.jpg');
     background-position: center top;
     height: 600px;
     margin-top: -200px;
