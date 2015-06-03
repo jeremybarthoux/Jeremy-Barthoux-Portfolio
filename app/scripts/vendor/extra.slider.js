@@ -377,20 +377,31 @@ http://slider.extralagence.com
             /*********************************** AUTO ***********************************/
             if (!isNaN(opt.auto) && opt.auto > 0) {
                 autoSlide();
+                $window.on({
+                    'scroll.Scrolling': function() {
+                        if ($window.scrollTop() > window.innerHeight) {
+                            $this.trigger('pause.extra.slider', [$this]);
+                            autoTween.pause();
+                        } else {
+                            $this.trigger('resume.extra.slider', [$this]);
+                            autoTween.resume();
+                        }
+                    }
+                });
                 $this.on('mouseenter pause', function () {
                     // listener
                     if (opt.onPause) {
                         opt.onPause($this);
                     }
-                    $this.trigger('pause.extra.slider', [$this]);
-                    autoTween.pause();
+                    //$this.trigger('pause.extra.slider', [$this]);
+                    //autoTween.pause();
                 }).on('mouseleave resume', function () {
                     // listener
                     if (opt.onResume) {
                         opt.onResume($this);
                     }
-                    $this.trigger('resume.extra.slider', [$this]);
-                    autoTween.resume();
+                    //$this.trigger('resume.extra.slider', [$this]);
+                    //autoTween.resume();
                 });
             }
 

@@ -1,10 +1,4 @@
-init = ->
-	document.getElementById('home').style.height = window.innerHeight + 'px';
-init()
-
 $ ->
-	$(window).resize init
-
 #----Menu
 	responsiveMenuFtc = ->
 		if window.innerWidth > 550
@@ -191,7 +185,7 @@ $ ->
 
 		verifSmall = true
 
-		# Competance Fix Anim
+	# Competance Fix Anim Rezise
 	$(window).resize ->
 		if window.innerWidth > 979
 			if verifSmall
@@ -223,7 +217,6 @@ $ ->
 				sceneComp = new ScrollScene offset: -100, duration: 800, triggerElement: '#competence'
 					.setTween timeLineComp
 					.addTo controller
-					#.addIndicators zindex: 50000, suffix: 'competance'
 
 				verifBig = true
 		else 
@@ -246,7 +239,6 @@ $ ->
 				sceneCompRespSvg1 = new ScrollScene duration: 300, triggerElement: '#competence'
 					.setTween timeLineCompRespSvg1
 					.addTo controller
-					#.addIndicators zindex: 50000, suffix: 'competenceRespSVG1'
 
 				timeLineCompRespSvg2 = new TimelineMax
 				timeLineCompRespSvg2.from '#competence #prog', 1.4, marginLeft: '-70'
@@ -257,8 +249,8 @@ $ ->
 				sceneCompRespSvg2 = new ScrollScene duration: 300, triggerElement: '#competence .floatRight'
 					.setTween timeLineCompRespSvg2
 					.addTo controller
-					#.addIndicators zindex: 50000, suffix: 'competenceRespSVG2'
 				verifSmall = true
+
 
 #----Link
 	$('a').click (e) ->
@@ -290,109 +282,163 @@ $ ->
 		-> TweenMax.to $($(@).find('.txt')), 0.9, marginTop: '-100%'; TweenMax.to $($(@).find('.txt')), 0.6, opacity:0; TweenMax.to $($(@).find('.overflow')), 1, opacity:0; TweenMax.to $($(@).find('.img')), 1.5, 'filter' : 'blur(0px)'
 	)
 
+	$('#cv svg').hover(
+		-> TweenMax.to $($(@).find('#eyeCv')), 0.5, opacity:0.9; TweenMax.to $($(@).find('#textCv')), 0.5, opacity:0
+		-> TweenMax.to $($(@).find('#eyeCv')), 0.5, opacity:0; TweenMax.to $($(@).find('#textCv')), 0.5, opacity:0.75
+	)
+
 #----Portfolio
 
-	$('#portfolio .wrapper').isotope 
+	###$('#portfolio .wrapper').isotope 
 		itemSelector: 'li',
-		layoutMode: 'packery'
+		layoutMode: 'packery'###
 
 	$('#portfolio .wrapper li .wrap').click ->
-	  selector = $(this).parent().attr('id')
-	  index = selector.replace(/[a-zA-Z\s]{7}/, '')
-	  if projectOpen == true
-	    changeProject index
-	  else
-	    project index
+		selector = $(this).parent().attr('id')
+		index = selector.replace(/[a-zA-Z\s]{7}/, '')
+		if projectOpen == true
+			changeProject index
+		else
+			project index
 
 	$('#projectView .right svg.big').click ->
-	  exitProject()
+		exitProject()
 
 	$('#projectView .right svg.sml').click ->
-	  `var index`
-	  if Number(lastIndex) == 6
-	    index = 0
-	  else
-	    index = Number(lastIndex) + 1
-	  changeProject index
+		`var index`
+		if Number(lastIndex) == 6
+			index = 0
+		else
+			index = Number(lastIndex) + 1
+		changeProject index
 
 	$('#projectView .left svg.sml').click ->
-	  `var index`
-	  if Number(lastIndex) == 0
-	    index = 6
-	  else
-	    index = Number(lastIndex) - 1
-	  changeProject index
+		`var index`
+		if Number(lastIndex) == 0
+			index = 6
+		else
+			index = Number(lastIndex) - 1
+		changeProject index
 
 	projectOpen = false
 	projectFirstOpen = true
 	lastIndex = ''
+	sceneProjectViewR = ''
+	sceneProjectViewL = ''
 
 	project = (index) ->
-	  projectOpen = true
-	  TweenMax.to '#portfolio .loader', .2, opacity: 1
+		projectOpen = true
+		TweenMax.to '#portfolio .loader', .2, opacity: 1
 
-	  if projectFirstOpen == true
-	    TweenMax.to window, .2,
-	      scrollTo: y: $('#portfolio').offset().top - 50
-	      ease: Power2.easeOut
+		if projectFirstOpen == true
+			TweenMax.to window, .2,
+				scrollTo: y: $('#portfolio').offset().top - 50
+				ease: Power2.easeOut
 
-	  projectFirstOpen = false
-	  $('#portfolio #projectView').css 'display', 'block'
-	  $('#projectView h2').html $('#portfolio #project' + index + ' .txt h2').html()
-	  $('#projectView p').html $('#portfolio #project' + index + ' .txt .desc').html()
+		projectFirstOpen = false
+		$('#portfolio #projectView').css 'display', 'block'
+		$('#projectView h2').html $('#portfolio #project' + index + ' .txt h2').html()
+		$('#projectView p').html $('#portfolio #project' + index + ' .txt .desc').html()
 
-	  $.getJSON 'php/box.php?list=' + index, (data) ->
-	    lastIndex = index
-	    length = data.length
-	    i = 0
-	    while i < length
-	      $('#projectView .wrap').append $('<img class=\'present\' />').attr('src', data[i])
-	      i++
-	    if i == length
-	      TweenMax.to '#portfolio .loader', .2, opacity: 0
-	      TweenMax.to '#projectView', .5,
-	        opacity: 1
-	        onComplete:
-		        callback = ->
-		          durationTrigger = $('#projectView .wrap').height() - $('#projectView #projectViewNavLeft').height()
-		          sceneFollowNavR = new ScrollScene(
-		            duration: durationTrigger
-		            triggerElement: '#projectView').setPin('#projectViewNavRight', pushFollowers: true).addTo(controller)
-		          sceneFollowNavL = new ScrollScene(
-		            duration: durationTrigger
-		            triggerElement: '#projectView').setPin('#projectViewNavLeft', pushFollowers: true).addTo(controller)
+		$.getJSON 'php/getProject.php?list=' + index, (data) ->
+			lastIndex = index
+			length = 0
+			for item in data
+				length = item
+			i = 1
+			while i <= length
+				$('#projectView .wrap').append $('<img class=\'present\' />').attr('src', data[i])
+				i++
+				if i == length
+					TweenMax.to '#portfolio .loader', .2, opacity: 0
+					TweenMax.to '#projectView', .5,
+						opacity: 1
+						onComplete:
+							callback = ->
+								setTimeout (->
+									callbackProjectTrigger()
+									TweenMax.to '#projectViewNavLeft, #projectViewNavRight', .2, opacity: 1
+								), 1000
+
+	callbackProjectTrigger = ->
+		durationTrigger = $('#projectView .wrap').height() - $('#projectView #projectViewNavLeft').height()
+		sceneProjectViewR = new ScrollScene(
+			duration: durationTrigger
+			triggerElement: '#projectView').setPin('#projectViewNavRight', pushFollowers: true).addTo(controller)
+		sceneProjectViewL = new ScrollScene(
+			duration: durationTrigger
+			triggerElement: '#projectView').setPin('#projectViewNavLeft', pushFollowers: true).addTo(controller)
 
 	closeProject = ->
-	  projectOpen = false
-	  TweenMax.to window, .5,
-	    scrollTo: y: $('#portfolio').offset().top - 50
-	    ease: Power2.easeOut
-	    onComplete:
-		    callback = ->
-		      TweenMax.to '#projectView', .5,
-		        opacity: 0
-		        onComplete:
-			        callback = ->
-			          $('#projectView img.present').remove()
-			          controller.removeScene [
-			            sceneFollowNavR
-			            sceneFollowNavL
-			          ]
-			          sceneFollowNavR.destroy()
-			          sceneFollowNavL.destroy()
-			          controller.update true
+		projectOpen = false
+		TweenMax.to window, .5,
+			scrollTo: y: $('#portfolio').offset().top - 50
+			ease: Power2.easeOut
+			onComplete:
+				callback = ->
+					TweenMax.to '#projectView, #projectViewNavLeft, #projectViewNavRight', .5,
+						opacity: 0
+						onComplete:
+							callback = ->
+								$('#projectView img.present').remove()
+								controller.removeScene [
+									sceneProjectViewR
+									sceneProjectViewL
+								]
+								sceneProjectViewR.destroy()
+								sceneProjectViewL.destroy()
+								controller.update true
 
 
 	changeProject = (index) ->
-	  closeProject()
-	  setTimeout (->
-	    project index
-	  ), 1000
+		closeProject()
+		setTimeout (->
+			project index
+		), 1000
 
 	exitProject = ->
-	  closeProject()
-	  projectFirstOpen = true
-	  $('#portfolio .project').css 'display', 'none'
+		closeProject()
+		projectFirstOpen = true
+		$('#portfolio .project').css 'display', 'none'
+
+	resizeProject = ->
+		if projectOpen == true
+			controller.removeScene [
+				sceneProjectViewR
+				sceneProjectViewL
+			]
+			sceneProjectViewR.destroy()
+			sceneProjectViewL.destroy()
+			controller.update true
+			setTimeout (->
+				callbackProjectTrigger()
+			), 100
+
+	$(window).resize ->
+		resizeProject()
+
+#----CV
+
+	$('#cv svg').click ->
+		TweenMax.to $('#cv svg, #cv span'), 0.5,
+			opacity: 0,
+			onComplete:
+				callback = ->
+					$('#cv svg, #cv span').css 'display', 'none'
+					$('#cv img, #cv .img').css 'display', 'block'
+					$('#cv').css 'height', '100%'
+					TweenMax.to $('#cv img'), 0.5, opacity: 1
+
+	$('#cv img').click ->
+		TweenMax.to $('#cv img'), 0.5,
+			opacity: 0,
+			onComplete:
+				callback = ->
+					$('#cv svg, #cv span').css 'display', 'block'
+					$('#cv img, #cv .img').css 'display', 'none'
+					$('#cv').css 'height', '800px'
+					TweenMax.to $('#cv svg'), 0.5, opacity: 1
+					TweenMax.to $('#cv span'), 0.5, opacity: 0.5
 
 #----Formulaire
 
@@ -437,7 +483,7 @@ $ ->
 
 		if nomVerif is "" or mailVerif is "" or raisonVerif is "" or messageVerif is ""
 			$("#contact .error").animate
-				  opacity: 1
+					opacity: 1
 				, "slow"
 			$("#contact .error").html "Les champs doivent êtres tous remplis"
 			if nomVerif is ""
@@ -477,6 +523,11 @@ $ ->
 						$("#mail").val ""
 						$("#raison").val ""
 						$("#message").val ""
+						setTimeout (->
+							$("#contact .error").animate
+								opacity: 0
+								, "fast"
+						), 3000
 			else
 				$("#contact .error").animate
 					opacity: 1

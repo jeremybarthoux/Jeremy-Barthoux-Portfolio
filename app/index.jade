@@ -1,9 +1,24 @@
+<?php session_start(); ?>
 doctype html
 html
   head
     meta(charset='UTF-8')
     title Jeremy Barthoux
-    link(rel="shortcut icon" type="image/x-icon" href='images/favicon.ico' )
+    meta(name="description" lang="fr" content="Jeremy Barthoux graphiste, webdesigner et développeur front-end.")
+    meta(name="Keywords" content="barthoux, design, graphisme, jeremy, webdesign, front-end, devellpoppeur web, design graphique, jeremy barthoux, portfolio, annecy, geneve, mauritius")
+    meta(name="robots" content="index,follow")
+    meta(name="copyright" content="©2015 Jeremy Barthoux, all rights reserved.")
+    meta(name="author" content="Jeremy Barthoux")
+    script(type='text/javascript').
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50738320-2', 'auto');
+      ga('send', 'pageview');
+
+    link(rel="shortcut icon" type="image/x-icon" href='favicon.ico' )
     link(href='http://fonts.googleapis.com/css?family=Quicksand:400,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='styles/main.css', type='text/css')
   body
@@ -15,28 +30,28 @@ html
         li: a(href='#portfolio') Portfolio
         li: a(href='#contact') Contact
       span.active
-      img(src='images/logo.svg' alt='Logo Jeremy Barthoux')
+      img(src='images/jeremybarthoux_logo.svg' alt='Logo Jeremy Barthoux')
       p.responsiveMenu Menu
     section#home
-      .silder
+      .slider
         .loader
         .wrapper
           ul
-            li(style='background-image:url("images/projet/tourmaline_home.jpg");')
-              a(href='#project1').wrapperTxt
-                h3 La Tourmaline
-                p Web Design &amp Développement
             li(style='background-image:url("images/projet/wiseapp_home.jpg");')
-              a(href='#project2').wrapperTxt
+              a(href='#project1').wrapperTxt
                 h3 The WiseApp
                 p Application Design
+            li(style='background-image:url("images/projet/tourmaline_home.jpg");')
+              a(href='#project0').wrapperTxt
+                h3 La Tourmaline
+                p Web Design &amp Développement
         .pagination
 
-      img.title(src='images/title_home.svg' alt='Jeremy Barthoux : Graphiste et Developpeur')
+      img.title(src='images/home_banner.svg' alt='Jeremy Barthoux : Graphiste et Developpeur')
       a(href='#citation').bottom
         p Scroll Down
-        img.chevron(src='images/chevron_home.svg')
-        img.flecheHome(src='images/fleche_home.svg')
+        img.chevron(src='images/home_chevron.svg')
+        img.flecheHome(src='images/home_fleche.svg')
     .backgroundPattern
     section#citation
       .boxShadows
@@ -120,9 +135,12 @@ html
               .img(style='background-image:url("images/projet/tourmaline_min.jpg");')
               .overflow
               .txt
-                h2 La Tourmaline
+                h2 
+                  a(href='http://www.tourmaline-verte.com' target="_blank") La Tourmaline
                 p Web Design &amp Développement
-                p.desc Parti d'un site web existant l'objectif a été de clarifier l'information et de refaire le desin. Je vous pouvez accéder au site web a(href='www.tourmaline-verte.com') ICI.
+                p.desc Isabelle Noth possédait une site internet pour donner des informations sur son activité professionel. Elle souhaitait donc lui donner une touche plus actuel avec un design qui aille en conséquence. Voici donc la nouvelle version que vous pouvez consulter en ligne (
+                  a(href='http://www.tourmaline-verte.com' target="_blank") La Tourmaline
+                  |), ainsi qu’une présentation du travail effectué ci-dessous.
           li#project1
             .wrap
               .img(style='background-image:url("images/projet/wiseapp_min.jpg");')
@@ -130,7 +148,9 @@ html
               .txt
                 h2 TeamWise
                 p Application Design
-                p.desc Samantha Oss-Pegorar est une étudiante de l'université hotelière genvoise, pour finaliser son année, elle a effecté un stage dans la compagnie SSP qui detiens des restaurants, cafés et bars dans les airoport suisse. TeamWise est une carte fidélité,  mise en place par l'entreprise,  pour permettre au employer des airoport de bénéficier de réduction dans les commerces du groupe. On lui a demander de construire un projet pour améliorer les ventes. Nous avons alors discuter d'une solution d'application pour premettre l'extension de la carte TeamWise et la facilitée d'accée au réduction pour les menbres. Pour faciliter l'accée au points de restauration une carte interactive a était ajouter, ainssi que la validiter de l'ouverture en temps réel. Vous trouverais ci-dessous une presentation du travaille effectuer.
+                p.desc Samantha Oss-Pegorar, étudiante à l'université hotelière genevoise, a effecté un stage dans la compagnie SSP qui détiens des restaurants, cafés et bars dans les aéroports suisse. TeamWise est une carte de fidélité valable dans tous les commerces du groupe, proposant des réductions avantageuses dont peuvent bénéficiser les employés travaillant dans ces aéroports.
+                  br
+                  | Suite à un projet pour améliorer les ventes qui lui a était proposé, Mlle Oss-Pegorar m’a contacté afin concevoir une application pour smartphone en complément de la carte de fidélité TeamWise. Cette application facilite l’accés aux réductions, en donnant les informations des différents points de ventes tels que leurs emplacements et les heures d’ouverture.
 
           li#project2
             .wrap
@@ -139,7 +159,7 @@ html
               .txt
                 h2 Julien Brun
                 p Tampon encreur
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+                p.desc Julien Brun, développeur informatique, est parti en antartique, en tant que Magn-Sismo (titre professionel), durant une année dans le cadre d’un programme, TA-65, organisé par l’Institut Polaire Français - Paul Émile Victor. L’organisation propose à tous ses hivernants de leur réaliser un tampon personnalisé, il m’a alors contacté pour en effectuer le design.
           li#project3
             .wrap
               .img(style='background-image:url("images/projet/studentstart_min.jpg");')
@@ -147,15 +167,18 @@ html
               .txt
                 h2 Student Start
                 p Affiche &amp Carte membre
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+                p.desc Antoine Boillon, étudiant en commerce, en alternance chez Celio, a proposé un partenariat entre les universités et la chaine commercial pour son projet de fin d’étude. L’aspect graphique et communication a été réalisé par mes soins.
           li#project4
             .wrap
               .img(style='background-image:url("images/projet/insentio_min.jpg");')
               .overflow
               .txt
-                h2 Insentio
+                h2
+                  a(href='ref/insentio' target="_blank") Insentio
                 p Web Design &amp Développement
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+                p.desc Alfred Kwint souhaitait réaliser un site web contenant divers galleries d’artistes et des didacticiels. Ce projet a était réalisé par The Line (projet de création d’une agence de comm’). Vous trouverez une présentation ci-dessous et une visualisation du concept du site web 
+                  a(href='ref/insentio' target="_blank") ici
+                  |.
           li#project5
             .wrap
               .img(style='background-image:url("images/projet/combistar_min.jpg");')
@@ -163,15 +186,20 @@ html
               .txt
                 h2 Combistar
                 p Identité Visuelle
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+                p.desc Projet d’étude. Thématique : Volkswagen lance un nouveau combi, nommé le CombiStar.
+                  br
+                  | Il a était demandé de réaliser la communication visuelle du produit : logo, affiche, magazine produit, teaser de lancement. Le concept est basé sur l’aspect rétro du véhicule. 
           li#project6
             .wrap
               .img(style='background-image:url("images/projet/theline_min.jpg");')
               .overflow
               .txt
-                h2 The Line
+                h2 
+                  a(href='ref/theline' target="_blank") The Line
                 p Projet d'agence de comm'
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.
+                p.desc The Line est le projet de fin d’étude que nous avons réalisé à trois. Le concept était de créer une agence de communication accés sur le digital et les hautes technologies. Nous avons réalisé des projets variés, comprenant de la 3D, du web et des applications, dans un laps de temps réduit dont vous pouvez voir le résulat sur le lien suivant : 
+                  a(href='ref/theline' target="_blank") The line
+                  |.
           li#project7
             .wrap
               .img(style='background-image:url("images/projet/annecymag_min.jpg");')
@@ -179,16 +207,14 @@ html
               .txt
                 h2 Annecy Mag
                 p Magasine
-                p.desc Presentation du project en plusieur lignes si possible, Presentation du project en plusieur lignes si possible,Presentation du project en plusieur lignes si possible.      
+                p.desc Projet d’étude. Thématique : La ville d’Annecy souhaite améliorer son identité graphique, entre autre le logo de la ville.
+                  br
+                  | Le logo a était adouci par rapport à celui d’origine et le magazine bi-mensuel a était repensé afin de promouvoir son utlilisation.
     section#cv
-      svg.absL50(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 215.1 185.3')
-        path#backCv(opacity='0.5', fill='#FFFFFF', d='M161.2 185.3h-107L0.8 92.7L54.3 0h107l53.5 92.7L161.2 185.3z M60.1 175.1h95.2 L203 92.7l-47.6-82.5H60.1L12.5 92.7L60.1 175.1z')
-        g#mainCv
-          g#eyeCv(opacity='0.75')
-            path(opacity='0.75', fill='#FFFFFF', d='M149.5 19.9h-84l-42 72.7l42 72.7h84l42-72.7L149.5 19.9z M106.7 122.4 C69.2 122.4 46 93.1 46 93.1s23.2-30.1 60.7-30.1c37.5 0 62.7 31.2 62.7 31.2S144.2 122.4 106.7 122.4z')
-            path#inEyeCv(opacity='0.95', fill='#FFFFFF', d='M82.5 92.7c0 7.7 3.6 14.5 9.1 18.9c-1.8-1.8-2.9-4.3-2.9-7.1c0-5.6 4.5-10.1 10.1-10.1 s10.1 4.5 10.1 10.1s-4.5 10.1-10.1 10.1c-1.4 0-2.7-0.3-3.9-0.8c3.5 2 7.5 3.1 11.8 3.1c13.4 0 24.2-10.8 24.2-24.2 c0-13.4-10.8-24.2-24.2-24.2C93.4 68.5 82.5 79.3 82.5 92.7z')
-          path#textCv(opacity='0.75', fill='#FFFFFF', d='M149.5 19.9h-84l-42 72.7l42 72.7h84l42-72.7L149.5 19.9z M100.7 83.1H88v-3.2 c0-1.8-0.6-3.3-1.9-4.5c-1.2-1.2-2.7-1.9-4.5-1.9H68.9c-1.8 0-3.3 0.6-4.5 1.9c-1.2 1.2-1.9 2.7-1.9 4.5v25.5c0 1.8 0.6 3.3 1.9 4.5 c1.2 1.2 2.7 1.9 4.5 1.9h12.7c1.8 0 3.3-0.6 4.5-1.9c1.2-1.2 1.9-2.7 1.9-4.5v-3.2h12.7v3.2c0 2.7-0.5 5.2-1.5 7.5 c-1 2.3-2.4 4.3-4.1 6.1c-1.7 1.7-3.8 3.1-6.1 4.1c-2.3 1-4.8 1.5-7.4 1.5H68.9c-2.7 0-5.2-0.5-7.5-1.5c-2.3-1-4.3-2.4-6.1-4.1 c-1.7-1.7-3.1-3.7-4.1-6.1c-1-2.3-1.5-4.8-1.5-7.5V79.9c0-2.6 0.5-5.1 1.5-7.4c1-2.3 2.4-4.4 4.1-6.1c1.7-1.7 3.7-3.1 6.1-4.1 c2.3-1 4.8-1.5 7.5-1.5h12.7c2.6 0 5.1 0.5 7.4 1.5c2.3 1 4.4 2.4 6.1 4.1c1.7 1.7 3.1 3.8 4.1 6.1c1 2.3 1.5 4.8 1.5 7.4V83.1z M159.6 73.5l-16.6 51h-14.6l-16.6-51h-6.1V60.8h25.5v12.7h-6l10.5 32.3l10.5-32.3h-6V60.8h25.5v12.7H159.6z')
+      include ./include/cv_icn.jade
       span.lineCo.absL50.bottom
+      div.img
+        img(src='images/jeremybarthoux_cv.jpg')
     section#contact
       h2 Contactez moi
       form#formulaire(action='php/formulaire.php', method='post')
@@ -223,25 +249,25 @@ html
           span.deco1
           ul
             li
-              a(href='http://whale.open-dream.com/portfolio-simple/index.php') Nicolas Kaelin
+              a(href='http://open-dream.com/' target="_blank") Open-dream
             li
-              a(href='http://pierre.ammeloot.fr/') Pierre Ammelot
+              a(href='http://pierre.ammeloot.fr/' target="_blank") Pierre Ammelot
             li
-              a(href='http://whale.open-dream.com/') Whales
+              a(href='http://whale.open-dream.com/' target="_blank") Whales
             li
-              a(href='http://open-dream.com/') Open-dream
+              a(href='http://www.riderstiming.com/' target="_blank") Rider Stiming
         .col3.mrL
           h2 Outils de développement :
           span.deco2
           ul
             li
-              a(href='http://jquery.com/') Jquery
+              a(href='http://jquery.com/' target="_blank") Jquery
             li
-              a(href='http://greensock.com/tweenmax') TweenMax
+              a(href='http://greensock.com/tweenmax' target="_blank") TweenMax
             li
-              a(href='http://modernizr.com/') Modernizr
+              a(href='http://gulpjs.com/' target="_blank") Gulp
             li
-              a(href='http://gulpjs.com/') Gulp
+              a(href='http://slider.extralagence.com/' target="_blank") Extra Slider
         .col3.mrL
           h2 Design &amp Développement :
           span.deco3
@@ -250,13 +276,40 @@ html
               a(href='http://jeremybarthoux.fr/') Jeremy Barthoux
 
     script(type='text/javascript', src='scripts/vendor/jquery.min.js')
+    script(type='text/javascript').
+      var init;
+      init = function() { document.getElementById('home').style.height = window.innerHeight + 'px'; };
+      init();
+        $(window).resize(function() {init();});
+
     script(type='text/javascript', src='scripts/vendor/gsap.tweenMax.min.js')
+    script(type='text/javascript', src='scripts/vendor/extra.slider.js')
+    script(type='text/javascript').
+      $(document).ready(function() {
+        $("#home .slider").extraSlider({
+          'type': 'fade',
+          'auto': 8,
+          'navigate': false,
+          'onInit': moveLoader,
+          'onMoveStart': moveLoader
+        });
+        function moveLoader(currentItem, total, slider) {
+          autoTween = TweenMax.fromTo(slider.find('.loader'), 8, {width: 0}, {width: "100%"});
+          autoTween = TweenMax.fromTo(slider.find('.wrapperTxt'), 1, {right: '-100%'}, {right: '0'});
+        }
+      });
+    
     script(type='text/javascript', src='scripts/vendor/gsap.scrollToPlugin.min.js')
     script(type='text/javascript', src='scripts/vendor/jquery.scrollmagic.min.js')
     //- script(type='text/javascript', src='scripts/vendor/jquery.scrollmagic.debug.js')
+    script(type='text/javascript', src='scripts/main.js')
     script(type='text/javascript', src='scripts/vendor/isotope.min.js')
     script(type='text/javascript', src='scripts/vendor/isotope.packery.min.js')
-    script(type='text/javascript', src='scripts/vendor/extra.slider.js')
-    script(type='text/javascript', src='scripts/vendor/load.slider.js')
-    script(type='text/javascript', src='scripts/main.js')
+    script(type='text/javascript').
+      $(document).ready(function() {
+        $('#portfolio .wrapper').isotope({
+          itemSelector: 'li',
+          layoutMode: 'packery'
+        });
+      });
     <?php include 'php/buildProject.php' ?>

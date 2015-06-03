@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.55 841.891">
-	<defs>
-		<filter id="blurFilter2" width="150%" height="150%">
-			<feOffset in="SourceAlpha" dx="5" dy="10" result="offset2"/>
-			<feGaussianBlur in="offset2" stdDeviation="15"  result="blur2"/>
-			<feComponentTransfer in="blur2" result="opaci">
-				<feFuncA type="linear" slope="0.3"/>
-			</feComponentTransfer>
-			<feMerge>
-				<feMergeNode in="opaci" />
-				<feMergeNode in="SourceGraphic" />
-			</feMerge>
-		</filter>
-	</defs>
-	<polygon fill="#FFFFFF" points="56.128,0 56.128,356.061 595.275,667.551 1134.422,356.061 1134.422,0" filter="url(#blurFilter2)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1190.55px" height="841.891px"  viewBox="0 0 1190.55 841.891"><defs><filter id="blurFilter2" width="150%" height="150%"><feOffset in="SourceAlpha" dx="5" dy="10" result="offset2"/><feGaussianBlur in="offset2" stdDeviation="15"  result="blur2"/><feComponentTransfer in="blur2" result="opaci"><feFuncA type="linear" slope="0.3"/></feComponentTransfer><feMerge><feMergeNode in="opaci" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs><polygon fill="#FFFFFF" points="56.128,0 56.128,356.061 595.275,667.551 1134.422,356.061 1134.422,0" filter="url(#blurFilter2)"/></svg>

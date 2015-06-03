@@ -15,9 +15,9 @@ $grey: #252525;
 $grey-black: #161616;
 $grey-white: #3b3b3b;
 
-$pattern-white: url('images/foil.png');
-$pattern-blue: url('images/pattern_bis.png');
-$pattern-black: url('images/textured_az.jpg');
+$pattern-white: url('images/pattern_white.png');
+$pattern-blue: url('images/pattern_blue.png');
+$pattern-black: url('images/pattern_black.jpg');
 @mixin pattern($pattern) {background: $pattern repeat;}
 @mixin background-base() {background-size: 100%; background-repeat: no-repeat; background-position: center center;}
 
@@ -31,62 +31,62 @@ $font-size-h2: 1.8em;
 $font-size-li: 1em;
 
 @mixin typo-quick($size, $weight, $color) {
-    font-family: "Quicksand", sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    color: $color;
+		font-family: "Quicksand", sans-serif;
+		font-size: $size;
+		font-weight: $weight;
+		color: $color;
 }
 
 @mixin typo-home($size, $weight, $color) {
-    font-family: "Homestead-Regular", sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    color: $color;
+		font-family: "Homestead-Regular", sans-serif;
+		font-size: $size;
+		font-weight: $weight;
+		color: $color;
 }
 
 //--------  Media Queries   ---------
 
 @mixin responsive($media) {
-    @if $media == vld {
-        @content;
-    } @else if $media == ld {
-        @media only screen and (max-width: 1919px) { @content; }
-    } @else if $media == id {
-        @media only screen and (max-width: 1500px) { @content; }
-    } @else if $media == iid {
-        @media only screen and (max-width: 1340px) { @content; }
-    } @else if $media == nd {
-        @media only screen and (max-width: 1200px) { @content; }
-    } @else if $media == sd {
-        @media only screen and (max-width: 979px) { @content; }
-    } @else if $media == lp {
-        @media only screen and (max-width: 767px) { @content; }
-    } @else if $media == sp {
-        @media only screen and (max-width: 550px) { @content; }
-    } @else if $media == fixedOverflow {
-        @media only screen and (max-width: 450px) { @content; }
-    }
+		@if $media == vld {
+				@content;
+		} @else if $media == ld {
+				@media only screen and (max-width: 1919px) { @content; }
+		} @else if $media == id {
+				@media only screen and (max-width: 1500px) { @content; }
+		} @else if $media == iid {
+				@media only screen and (max-width: 1340px) { @content; }
+		} @else if $media == nd {
+				@media only screen and (max-width: 1200px) { @content; }
+		} @else if $media == sd {
+				@media only screen and (max-width: 979px) { @content; }
+		} @else if $media == lp {
+				@media only screen and (max-width: 767px) { @content; }
+		} @else if $media == sp {
+				@media only screen and (max-width: 550px) { @content; }
+		} @else if $media == fixedOverflow {
+				@media only screen and (max-width: 450px) { @content; }
+		}
 }
 
 //--------  Global config  ---------
 section {
-    display: block;
-    position: relative;
-    width: 100%;
+		display: block;
+		position: relative;
+		width: 100%;
 }
 
 body {
-    @include pattern($pattern-white);
-    color: $white;
-    font-size: 16px;
-    height: 100%;
-    overflow-x: hidden;
-    widows: 100%;
-    min-width: 450px;
+		@include pattern($pattern-white);
+		color: $white;
+		font-size: 16px;
+		height: 100%;
+		overflow-x: hidden;
+		widows: 100%;
+		min-width: 450px;
 
-    @include responsive(fixedOverflow) {
-        overflow-x: visible;
-    }
+		@include responsive(fixedOverflow) {
+				overflow-x: visible;
+		}
 }
 
 .abs {position: absolute;}
@@ -100,1273 +100,1388 @@ a {text-decoration: none;}
 
 //--------  Header   ---------
 header {
-    position: fixed;
-    z-index: 500;
-    height: 51px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: $white;
-    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+		position: fixed;
+		z-index: 500;
+		height: 51px;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: $white;
+		box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
 
-    ul {
-        height: 100%;
-        width: 100%;
+		ul {
+				height: 100%;
+				width: 100%;
 
-        li {
-            @include typo-quick($font-size-p, $font-big, $grey);
-            line-height: 50px;
-            vertical-align: middle;
-            text-align: center;
-            display: inline-block;
-            background-color: $white;
+				li {
+						@include typo-quick($font-size-p, $font-big, $grey);
+						line-height: 50px;
+						vertical-align: middle;
+						text-align: center;
+						display: inline-block;
+						background-color: $white;
 
-            @include responsive(sp) {
-                display: none;
-            }
+						@include responsive(sp) {
+								display: none;
+						}
 
-            a {
-                padding: 25px;
-                color: $grey;
+						a {
+								padding: 25px 25px 15px 25px;
+								color: $grey;
 
-                @include responsive(lp) {
-                    padding: 25px 7px 25px 7px;
-                    font-size: -0.3+$font-size-p
-                }
-            }
-        }
-    }
+								@include responsive(lp) {
+										padding: 25px 7px 15px 7px;
+										font-size: -0.3+$font-size-p
+								}
+						}
+				}
+		}
 
-    .responsiveMenu {
-        display: none;
+		.responsiveMenu {
+				display: none;
 
-        @include responsive(sp) {
-            display: block;
-            @include typo-quick($font-size-p+.3, $font-big, $grey);
-            margin-left: 50%;
-            margin-top: -40px;
-            transform: translateX(-50%);
-            width: 65px;
-            cursor: pointer;
-        }
-    }
+				@include responsive(sp) {
+						display: block;
+						@include typo-quick($font-size-p+.3, $font-big, $grey);
+						margin-left: 50%;
+						margin-top: -40px;
+						transform: translateX(-50%);
+						width: 65px;
+						cursor: pointer;
+				}
+		}
 
-    span.active {
-        height: 1px;
-        width: 55px;
-        border-radius: 5px;
-        background-color: $grey;
-        position: absolute;
-        left: 25px;
-        top: 50%;
-        margin-top: 11px;
-        z-index: 600;
+		span.active {
+				height: 1px;
+				width: 55px;
+				border-radius: 5px;
+				background-color: $grey;
+				position: absolute;
+				left: 25px;
+				top: 50%;
+				margin-top: 11px;
+				z-index: 600;
 
-        @include responsive(sp) {
-            display: none;
-        }
-    }
+				@include responsive(sp) {
+						display: none;
+				}
+		}
 
-    img {
-        height: 40px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
-    }
+		img {
+				height: 40px;
+				position: absolute;
+				right: 5px;
+				top: 5px;
+		}
 }
 
 //--------  Sections   ---------
 .backgroundPattern {
-    @include pattern($pattern-white);
-    position: absolute;
-    z-index: 50;
-    height: 2800px;
-    width: 100%;
+		@include pattern($pattern-white);
+		position: absolute;
+		z-index: 50;
+		height: 2800px;
+		width: 100%;
 
-    @include responsive(iid) {
-        height: 3500px;
-    }
+		@include responsive(iid) {
+				height: 3500px;
+		}
 }
 
 #home {
-    z-index: 0;
-    background-color: $grey;
+		z-index: 0;
+		background-color: $grey;
+		height: 700px;
 
-    .silder {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        margin: auto;
+		.slider {
+				height: 100%;
+				width: 100%;
 
-        .wrapper {
-            z-index: 30;
-            height: 100%;
-            width: 100%;
+				.wrapper {
+						z-index: 30;
+						height: 100%;
+						width: 100%;
 
-            ul {
-                height: 100%;
-                width: 100%;
-                position: relative;
-                list-style: none;
-            }
+						ul {
+								height: 100%;
+								width: 100%;
+								position: relative;
+								list-style: none;
+						}
 
-            li {
-                @include background-base();
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                background-size: cover;
-                background-position: center center;
-            }
+						li {
+								@include background-base();
+								position: absolute;
+								top: 0;
+								left: 0;
+								height: 100%;
+								width: 100%;
+								background-size: cover;
+								background-position: center center;
+						}
 
-            .wrapperTxt {
-                position: absolute;
-                top: 50px;
-                right: -100%;
-                background-color: rgba(0,0,0,0.5);
+						.wrapperTxt {
+								position: absolute;
+								top: 50px;
+								right: -100%;
+								background-color: rgba(0,0,0,0.5);
 
-                h3 {
-                    @include typo-home($font-size-h2, $font-reg, $white);
-                    display: block;
-                    padding: 40px 20px 10px 20px;
-                    text-align: center;
-                }
+								&:hover {
+									h3 {
+										color: $blue;
+									}
+								}
 
-                p {
-                    @include typo-quick($font-size-p, $font-big, $white);
-                    display: block;
-                    padding: 10px 20px 20px 20px;
-                }
-            }
-        }
+								h3 {
+										@include typo-home($font-size-h2, $font-reg, $white);
+										display: block;
+										padding: 40px 20px 10px 20px;
+										text-align: center;
+										text-decoration: underline;
+								}
 
-        .pagination {
-            z-index: 80;
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
+								p {
+										@include typo-quick($font-size-p, $font-big, $white);
+										display: block;
+										padding: 10px 20px 20px 20px;
+								}
+						}
+				}
 
-            a {
-                @include background-base();
-                width: 20px;
-                height: 20px;
-                margin-left: 10px;
-                background-image: url('images/nav_bg.svg');
-                display: inline-block;
-                font-size: 0;
+				.pagination {
+						z-index: 80;
+						position: absolute;
+						bottom: 20px;
+						right: 20px;
 
-                &.active,
-                &:hover {
-                    @include background-base();
-                    width: 20px;
-                    height: 20px;
-                    background-image: url('images/nav_on.svg');
-                    position: relative;
-                }
-            }
-        }
+						a {
+								@include background-base();
+								width: 20px;
+								height: 20px;
+								margin-left: 10px;
+								background-image: url('images/home_nav_bg.svg');
+								display: inline-block;
+								font-size: 0;
 
-        .loader {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: $blue; //$grey;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-        }
-    }
+								&.active,
+								&:hover {
+										@include background-base();
+										width: 20px;
+										height: 20px;
+										background-image: url('images/home_nav_on.svg');
+										position: relative;
+								}
+						}
+				}
 
-    .title {
-        z-index: 50;
-        $heightImgHome: 400px; 
-        position: absolute;
-        height: $heightImgHome;
-        width: $heightImgHome;
-        left: 0;
-        top: 50%;
-        margin-top: -$heightImgHome/2;
-    }
+				.loader {
+						display: block;
+						height: 3px;
+						width: 100%;
+						background-color: $blue;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						z-index: 100;
+				}
+		}
 
-    .bottom {
-        z-index: 50;
-        position: absolute;
-        width: 250px;
-        height: 90px;
-        border-top: rgba(255, 255, 255, .5) 3px solid;
-        border-left: rgba(255, 255, 255, .5) 3px solid;
-        border-right: rgba(255, 255, 255, .5) 3px solid;
-        border-radius: 10px 10px 0 0;
-        left: 50%;
-        margin-left: -125px;
-        cursor: pointer;
-        transition: opacity 3s ease-in-out;
+		.title {
+				z-index: 50;
+				$heightImgHome: 400px; 
+				position: absolute;
+				height: $heightImgHome;
+				width: $heightImgHome;
+				left: 0;
+				top: 50%;
+				margin-top: -$heightImgHome/2;
 
-        &:hover {
-            .chevron,
-            .flecheHome {
-                opacity: 1;
-            }
-        }
+				@include responsive(iid) {
+					$heightImgHome: 300px;
+					height: $heightImgHome;
+					width: $heightImgHome;
+					margin-top: -$heightImgHome/2;
+				}
+
+				@include responsive(sd) {
+					$heightImgHome: 200px;
+					height: $heightImgHome;
+					width: $heightImgHome;
+					margin-top: -$heightImgHome/2;
+				}
+		}
+
+		.bottom {
+				z-index: 50;
+				position: absolute;
+				width: 250px;
+				height: 90px;
+				border-top: rgba(255, 255, 255, .5) 3px solid;
+				border-left: rgba(255, 255, 255, .5) 3px solid;
+				border-right: rgba(255, 255, 255, .5) 3px solid;
+				border-radius: 10px 10px 0 0;
+				left: 50%;
+				margin-left: -125px;
+				cursor: pointer;
+				transition: opacity 3s ease-in-out;
+
+				&:hover {
+						.chevron,
+						.flecheHome {
+								opacity: 1;
+						}
+				}
+
+				@include responsive(sd) {
+					width: 200px;
+					height: 60px;
+					margin-left: -75px;
+				}
 
 
-        p {
-            @include typo-quick($font-size-h2, $font-big, $white);
-            line-height: 20px;
-            vertical-align: middle;
-            text-align: center;
-            letter-spacing:2px;
-            margin-top: 20px;
-        }
+				p {
+						@include typo-quick($font-size-h2, $font-big, $white);
+						line-height: 20px;
+						vertical-align: middle;
+						text-align: center;
+						letter-spacing:2px;
+						margin-top: 20px;
 
-        .chevron {
-            position: absolute;
-            width: 50px;
-            left: 50%;
-            margin-left: -25px;
-            margin-top: 10px;
-            opacity: 0.4;
-        }
+						@include responsive(sd) {
+							letter-spacing:0px; 
+						}
+				}
 
-        .flecheHome {
-            position: absolute;
-            width: 30px;
-            right: 0;
-            margin-right: -50px;
-            margin-top: -25px;
-            opacity: 0.4;
-        }
-    }
+				.chevron {
+						position: absolute;
+						width: 50px;
+						height: 30px;
+						left: 50%;
+						margin-left: -25px;
+						margin-top: 10px;
+						opacity: 0.4;
+
+						@include responsive(sd) {
+							display: none;
+						}
+				}
+
+				.flecheHome {
+						position: absolute;
+						width: 30px;
+						height: 56px;
+						right: 0;
+						margin-right: -50px;
+						margin-top: -30px;
+						opacity: 0.4;
+
+						@include responsive(sd) {
+							left: 0;
+							width: 20px;
+							height: 37px;
+							margin-right: 0;
+							margin-left: -35px;
+						}
+				}
+		}
 }
 
 #citation {
-    @include pattern($pattern-white);
-    z-index: 100;
-    height: 600px;
-    
-    @include responsive(ld) {
-        height: 400px;
-    }
+		@include pattern($pattern-white);
+		z-index: 100;
+		height: 600px;
+		
+		@include responsive(ld) {
+				height: 400px;
+		}
 
-    .boxShadows {
-        position: absolute;
-        z-index: 200;
-        top: -10px;
-        height: 10px;
-        width: 100%;
-        background-image: linear-gradient(rgba(37, 37, 37, 0) 0%, rgba(37, 37, 37, .15) 75%, rgba(37, 37, 37, .4) 100%);
-    }
+		.boxShadows {
+				position: absolute;
+				z-index: 200;
+				top: -10px;
+				height: 10px;
+				width: 100%;
+				background-image: linear-gradient(rgba(37, 37, 37, 0) 0%, rgba(37, 37, 37, .15) 75%, rgba(37, 37, 37, .4) 100%);
+		}
 
-    .wrapper {
-        @mixin cit-wrapper($width, $heigth, $screen) {
-            @include responsive($screen) {
-                margin-left: -$width/2;
-                width: $width;
-                $citation-wrapper-height: $heigth;
-                height: $citation-wrapper-height;
-                margin-top: -$citation-wrapper-height/2;
-                line-height: $citation-wrapper-height;
-            }
-        }
+		.wrapper {
+				@mixin cit-wrapper($width, $heigth, $screen) {
+						@include responsive($screen) {
+								margin-left: -$width/2;
+								width: $width;
+								$citation-wrapper-height: $heigth;
+								height: $citation-wrapper-height;
+								margin-top: -$citation-wrapper-height/2;
+								line-height: $citation-wrapper-height;
+						}
+				}
 
-        @include size();
-        @include cit-wrapper(1200px, 250px, vld);
-        @include cit-wrapper(950px, 200px, ld);
-        @include cit-wrapper(700px, 180px, nd);
-        @include cit-wrapper(500px, 200px, sd);
-        @include cit-wrapper(300px, 200px, lp);
+				@include size();
+				@include cit-wrapper(1200px, 250px, vld);
+				@include cit-wrapper(950px, 200px, ld);
+				@include cit-wrapper(700px, 180px, nd);
+				@include cit-wrapper(500px, 200px, sd);
+				@include cit-wrapper(300px, 200px, lp);
 
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        background-color: transparent;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				background-color: transparent;
 
-        .responsiveBreak {
-            display: none;
+				.responsiveBreak {
+						display: none;
 
-            @include responsive(sd) {
-                display: inline;
-            }
-        }
+						@include responsive(sd) {
+								display: inline;
+						}
+				}
 
-        p {
-            @include typo-home($font-size-h1+.5, $font-reg, $grey);
-            text-align: center;
-            line-height: normal;
-            vertical-align: middle;
-            display: inline-block;
+				p {
+						@include typo-home($font-size-h1+.5, $font-reg, $grey);
+						text-align: center;
+						line-height: normal;
+						vertical-align: middle;
+						display: inline-block;
 
-            @include responsive(ld) {
-                font-size: $font-size-h1;
-            }
+						@include responsive(ld) {
+								font-size: $font-size-h1;
+						}
 
-            @include responsive(nd) {
-                font-size: -.5+$font-size-h1;
-            }
-        }
+						@include responsive(nd) {
+								font-size: -.5+$font-size-h1;
+						}
+				}
 
-        .img {
-            @include background-base();
-            background-image: url('images/nav_bg_grey.svg');
-            fill: $grey;
-            left: 50%;
-            $citation-img-height: 20px;            
-            height: $citation-img-height;
-            width: $citation-img-height;            
-            margin-left: -$citation-img-height/2;
-        }
+				.img {
+						@include background-base();
+						background-image: url('images/citation_hexagone.svg');
+						fill: $grey;
+						left: 50%;
+						$citation-img-height: 20px;            
+						height: $citation-img-height;
+						width: $citation-img-height;            
+						margin-left: -$citation-img-height/2;
+				}
 
-        .top.img {margin-top: -10px;}
-        .bottom.img {margin-bottom: -10px;}
+				.top.img {margin-top: -10px;}
+				.bottom.img {margin-bottom: -10px;}
 
-        span {
-            height: 2px;
-            width: 100px;
-            background-color: $grey;
-        }       
+				span {
+						height: 2px;
+						width: 100px;
+						background-color: $grey;
+				}       
 
-        .leftDeco {left: 50%;margin-left: -140px;}
-        .rightDeco {left: 50%;margin-left: 40px;}
+				.leftDeco {left: 50%;margin-left: -140px;}
+				.rightDeco {left: 50%;margin-left: 40px;}
 
-        .decoWrapperTop,
-        .decoWrapperBottom{
-            position: absolute;
-            left: 50%;
-            background: transparent;
-        }
-    }
+				.decoWrapperTop,
+				.decoWrapperBottom{
+						position: absolute;
+						left: 50%;
+						background: transparent;
+				}
+		}
 }
 
 #about {
-    @include pattern($pattern-blue);
-    z-index: 200;
-    height: 400px;
-    overflow: hidden;
-    box-shadow: $grey 2px 2px 10px;
+		@include pattern($pattern-blue);
+		z-index: 200;
+		height: 400px;
+		overflow: hidden;
+		box-shadow: $grey 2px 2px 10px;
 
-    @include responsive(nd) {
-        height: 600px;
-    }
+		@include responsive(nd) {
+				height: 600px;
+		}
 
-    @include responsive(lp) {
-        height: 750px;
-    }
+		@include responsive(lp) {
+				height: 750px;
+		}
 
-    @include responsive(sp) {
-        height: 900px;
-    }
+		@include responsive(sp) {
+				height: 900px;
+		}
 
-    .wrapper {
-        @include size();
-        width: 1500px;
-        height: 100%;
+		.wrapper {
+				@include size();
+				width: 1500px;
+				height: 100%;
 
-        @include responsive(ld) {
-            width: 1000px;
-            margin-left: 10%;
-        }
+				@include responsive(ld) {
+						width: 1000px;
+						margin-left: 10%;
+				}
 
-        @include responsive(id) {
-            width: 900px;
-            margin-left: 50px;
-        }
+				@include responsive(id) {
+						width: 900px;
+						margin-left: 50px;
+				}
 
-        @include responsive(nd) {
-            width: 600px;
-            margin: auto;
-        }
+				@include responsive(nd) {
+						width: 600px;
+						margin: auto;
+				}
 
-        @include responsive(lp) {
-            width: 80%;
-        }
+				@include responsive(lp) {
+						width: 80%;
+				}
 
-        .line {
-            height: 2px;
-            left: -100%;
-            right: 100%;
-            margin-top: 76px;
-            margin-right: 60px;
-            background-color: $white;
+				.line {
+						height: 2px;
+						left: -100%;
+						right: 100%;
+						margin-top: 76px;
+						margin-right: 60px;
+						background-color: $white;
 
-            @include responsive(id) {
-                display: none;
-            }
-        }
+						@include responsive(id) {
+								display: none;
+						}
+				}
 
-        .circleSyb {
-            margin-right: -23px;
-            margin-top: -7px;
-            height: 18px;
-            width: 16px;
-        }
+				.circleSyb {
+						margin-right: -23px;
+						margin-top: -7px;
+						height: 18px;
+						width: 16px;
+				}
 
-        p {
-            @include typo-quick($font-size-p+.3, $font-reg, $white);
-            width: 1000px;
-            margin-top: 60px;
-            left: 0;
-            line-height: 1.5em;
+				p {
+						@include typo-quick($font-size-p+.3, $font-reg, $white);
+						width: 1000px;
+						margin-top: 60px;
+						left: 0;
+						line-height: 1.5em;
 
-            @include responsive(ld) {
-                font-size: $font-size-p+.2;
-                width: 800px;
-            }
+						@include responsive(ld) {
+								font-size: $font-size-p+.2;
+								width: 800px;
+						}
 
-            @include responsive(id) {
-                font-size: $font-size-p;
-                margin-top: 80px;
-                width: 700px;
-            }
+						@include responsive(id) {
+								font-size: $font-size-p;
+								margin-top: 80px;
+								width: 700px;
+						}
 
-            @include responsive(iid) {
-                margin-top: 70px;
-                width: 600px;
-            }
+						@include responsive(iid) {
+								margin-top: 70px;
+								width: 600px;
+						}
 
-            @include responsive(nd) {
-                margin-top: 0;
-                width: 100%;
-            }
-        }
-    }
+						@include responsive(nd) {
+								margin-top: 0;
+								width: 100%;
+						}
+				}
+		}
 
-    .img {
-        @include background-base();
-        width: 650px;
-        height: 100%;
-        background-image: url('../images/me.png');
-        
-        @include responsive(nd) {
-            background-image: url('../images/me_resp.png');
-            width: 250px;
-            height: 300px;
-            position: relative;
-            margin: auto;
-        }
-    }
+		.img {
+				@include background-base();
+				width: 650px;
+				height: 100%;
+				background-image: url('../images/jeremybarthoux.png');
+				
+				@include responsive(nd) {
+						background-image: url('../images/jeremybarthoux_resp.png');
+						width: 250px;
+						height: 300px;
+						position: relative;
+						margin: auto;
+				}
+		}
 }
 
 #competence {
-    @include pattern($pattern-white);
-    z-index: 100;
-    height: 1100px;
-    overflow: hidden;
+		@include pattern($pattern-white);
+		z-index: 100;
+		height: 1100px;
+		overflow: hidden;
 
-    @include responsive(sd) {
-        height: 100%;
-    }
+		@include responsive(sd) {
+				height: 100%;
+		}
 
-    h2 {
-        @include typo-home($font-size-h2+.3, $font-reg, $grey);
-        width: 100%;
-        text-align: center; 
-    }
+		h2 {
+				@include typo-home($font-size-h2+.3, $font-reg, $grey);
+				width: 100%;
+				text-align: center; 
+		}
 
-    .cptTxt {
-        @include background-base();
-        background-image: url('images/triangle_shadows.svg');
-        height: 210px;
-        width: 450px;
-        margin: auto;
-        position: relative;
+		.cptTxt {
+				@include background-base();
+				background-image: url('images/triangle_shadows.svg');
+				height: 210px;
+				width: 450px;
+				margin: auto;
+				position: relative;
 
-        span {
-            margin: auto;
-            z-index: 150;
-            height: 1px;
-            background-color: $grey;
-            width: 220px;
-            display: block;
-            position: relative;
-        }
+				span {
+						margin: auto;
+						z-index: 150;
+						height: 1px;
+						background-color: $grey;
+						width: 220px;
+						display: block;
+						position: relative;
+				}
 
-        .topLine {
-            top: 35px;
-        }
+				.topLine {
+						top: 35px;
+				}
 
-        .bottomLine {
-            top: 10px;
-        }
+				.bottomLine {
+						top: 10px;
+				}
 
-        h2 {
-            padding-top: 50px;
-            font-size: $font-size-h1+.5;
-        }
-    }
+				h2 {
+						padding-top: 50px;
+						font-size: $font-size-h1+.5;
+				}
+		}
 
-    .wrapper {
-        @include size();
-        height: 100%;
+		.wrapper {
+				@include size();
+				height: 100%;
 
-        @include responsive(sd) {
-            width: 450px;
-            padding-bottom: 250px;
-        }
+				@include responsive(sd) {
+						width: 450px;
+						padding-bottom: 250px;
+				}
 
 
 
-        >div {
-            @include background-base();
-            height: 720px;
-            width: 436px;
-            position: relative;
-            background-image: url('images/competence_bg.svg');
+				>div {
+						@include background-base();
+						height: 720px;
+						width: 436px;
+						position: relative;
+						background-image: url('images/competence_bg.svg');
 
-            @include responsive(sd) {
-                height: 650px;
-                width: 510px;
-                background-image: url('images/competence_bg_responsive.svg');
+						@include responsive(sd) {
+								height: 650px;
+								width: 510px;
+								background-image: url('images/competence_bg_responsive.svg');
 
-                #bgGraph,
-                #inProg,
-                .leftProg {
-                    display: none;
-                }
+								#bgGraph,
+								#inProg,
+								.leftProg {
+										display: none;
+								}
 
-                span {
-                    height: 2px;
-                    background-color: $grey;
-                    display: block;
-                }
-            }
+								span {
+										height: 2px;
+										background-color: $grey;
+										display: block;
+								}
+						}
 
-            h2 {
-                opacity: 1;
-                margin-top: 290px;
+						h2 {
+								opacity: 1;
+								margin-top: 290px;
 
-                @include responsive(sd) {
-                    margin-top: 0;
-                    padding-top: 190px;
-                }
-            }
+								@include responsive(sd) {
+										margin-top: 0;
+										padding-top: 190px;
+								}
+						}
 
-            ul {
-                @include typo-quick($font-size-li+.3, $font-reg, $grey);
-                opacity: 1;
-                width: 400px;
-                line-height: 1.8em;
-                margin-top: 50px;
-                margin-left: 60px;
+						ul {
+								@include typo-quick($font-size-li+.3, $font-reg, $grey);
+								opacity: 1;
+								width: 400px;
+								line-height: 1.8em;
+								margin-top: 50px;
+								margin-left: 60px;
 
-                @include responsive(sd) {
-                    margin-left: 55px;
-                    text-align: center;
-                }             
-            }
+								@include responsive(sd) {
+										margin-left: 55px;
+										text-align: center;
+								}             
+						}
 
-            svg {
-                width: 200px;
-                margin-left: -100px;
-                top: 60px;
-            }
+						svg {
+								width: 200px;
+								height: 200px;
+								margin-left: -100px;
+								top: 60px;
+						}
 
-            #bgGraph,
-            #inGraph,
-            #bgProg,
-            #inProg .nb {
-                opacity: 1;
-            }
+						#bgGraph,
+						#inGraph,
+						#bgProg,
+						#inProg .nb {
+								opacity: 1;
+						}
 
-            #progResp {
-                position: absolute;
-                margin-top: 14px;
-                margin-left: 80px;
-                width: 21.8px;
-                display: none;
+						#progResp {
+								position: absolute;
+								margin-top: 14px;
+								margin-left: 80px;
+								width: 21.8px;
+								height: 70px;
+								display: none;
 
-                @include responsive(sd) {
-                    display: block;
-                }
-            }
+								@include responsive(sd) {
+										display: block;
+								}
+						}
 
-            &.floatLeft {
-                float: left;
-                margin-left: -20px;
+						&.floatLeft {
+								float: left;
+								margin-left: -20px;
 
-                @include responsive(sd) {
-                    float: none;
-                    margin: auto;
-                    margin-top: -50px;
-                    margin-left: -30px;                    
-                }
+								@include responsive(sd) {
+										float: none;
+										margin: auto;
+										margin-top: -50px;
+										margin-left: -30px;                    
+								}
 
-                svg {
-                    @include responsive(sd) {
-                        width: 135px;
-                        margin-left: 60px;
-                        top: 126px;
-                    }
-                }
+								svg {
+										@include responsive(sd) {
+												width: 135px;
+												height: 135px;
+												margin-left: 60px;
+												top: 126px;
+										}
+								}
 
-                span {
-                    @include responsive(sd) {
-                        width: 210px;
-                        margin-left: 160px;
-                    }
-                }
-            }
+								span {
+										@include responsive(sd) {
+												width: 210px;
+												margin-left: 160px;
+										}
+								}
+						}
 
-            &.floatRight {
-                float: right;
-                margin-right: -20px;
+						&.floatRight {
+								float: right;
+								margin-right: -20px;
 
-                @include responsive(sd) {
-                    float: none;
-                    margin: auto;
-                    margin-top: -50px;
-                    margin-left: -30px;
-                }
+								@include responsive(sd) {
+										float: none;
+										margin: auto;
+										margin-top: -50px;
+										margin-left: -30px;
+								}
 
-                svg {
-                    @include responsive(sd) {
-                        width: 100px;
-                        margin-left: 70px;
-                        top: 155px;
-                    }
-                }
+								svg {
+										@include responsive(sd) {
+												width: 100px;
+												height: 100px;
+												margin-left: 70px;
+												top: 155px;
+										}
+								}
 
-                span {
-                    @include responsive(sd) {
-                        width: 285px;
-                        margin-top: 9px;
-                        margin-left: 108px;
-                    }
-                }
-            }
-        }        
-    }
+								span {
+										@include responsive(sd) {
+												width: 285px;
+												margin-top: 9px;
+												margin-left: 108px;
+										}
+								}
+						}
+				}        
+		}
 }
 
 #portfolio {
-    @include pattern($pattern-black);
-    z-index: 200;
-    height: 100%;
-    border-bottom: 2px solid $white;
-    border-top: 2px solid $grey-black;
+		@include pattern($pattern-black);
+		z-index: 200;
+		height: 100%;
+		border-bottom: 2px solid $white;
+		border-top: 2px solid $grey-black;
 
-    .cptTxt {
-        @include background-base();
-        height: 210px;
-        width: 450px;
-        background-image: url('images/triangle_shadows_2.svg');
-        margin: auto;
-        position: relative;
-        top: -210px;
-        
-        .overflow {
-            height: 100%;
-            width: 407px;
-            margin: auto;
-            overflow: hidden;
-        }
+		.cptTxt {
+				@include background-base();
+				height: 210px;
+				width: 450px;
+				background-image: url('images/triangle_shadows_2.svg');
+				margin: auto;
+				position: relative;
+				top: -210px;
+				
+				.overflow {
+						height: 100%;
+						width: 407px;
+						margin: auto;
+						overflow: hidden;
+				}
 
-        svg {
-            z-index: 250;
-            position: absolute;
-            left: 50%;
-            top: 20px;
-            height: 40px;
-            margin-left: -20px;
-            cursor: pointer;
-        }
+				svg {
+						z-index: 250;
+						position: absolute;
+						left: 50%;
+						top: 20px;
+						height: 40px;
+						width: 40px;
+						margin-left: -20px;
+						cursor: pointer;
+				}
 
-        h2 {
-            margin-top: 135px;
-            font-family: "Arvo", sans-serif;
-            font-size: $font-size-h1+.5;
-            font-weight: $font-big;
-            width: 100%;
-            text-align: center;
-            padding-top: 13px;
-        }
+				h2 {
+						margin-top: 135px;
+						font-family: "Arvo", sans-serif;
+						font-size: $font-size-h1+.5;
+						font-weight: $font-big;
+						width: 100%;
+						text-align: center;
+						padding-top: 13px;
+				}
 
-        span {
-            height: 2px;
-            background-color: $white;
-            width: 325px;
-            display: block;
-            position: relative;
+				span {
+						height: 2px;
+						background-color: $white;
+						width: 325px;
+						display: block;
+						position: relative;
 
-            &.topLine {
-                left: 80px;
-                top: 140px;
-            }
+						&.topLine {
+								left: 80px;
+								top: 140px;
+						}
 
-            &.bottomLine {
-                top: 5px;
-                left: 0;
-            }
-        }
-    }
-    
-    .upComptenu {
-        position: relative;
-        margin-top: -150px;
-    }
+						&.bottomLine {
+								top: 5px;
+								left: 0;
+						}
+				}
+		}
+		
+		.upComptenu {
+				position: relative;
+				margin-top: -150px;
+		}
 
-    .loader {
-        position: absolute;
-        left: 50%;
-        margin-left: -80px;
-        top: 85px;
-        opacity: 0;
-    }
+		.loader {
+				position: absolute;
+				left: 50%;
+				margin-left: -80px;
+				top: 85px;
+				opacity: 0;
+		}
 
-    .project {
-        display: none;
-        margin: auto;
-        position: relative;
-        width: 90%;
-        margin-bottom: 50px;
+		#projectView {
+				display: none;
+				margin: auto;
+				position: relative;
+				width: 90%;
+				margin-bottom: 50px;
+				
+				#projectViewNavLeft,
+				#projectViewNavRight {
+						opacity: 0;
+				}
 
-        .nav {
-            .right {
-                transform: translateX(-100%);
-            }
+				.nav {
+						.right {
+								transform: translateX(-100%);
+						}
 
-            .sml,
-            .big {
-                height: 60px;
-                display: block;
-                cursor: pointer;
+						.sml,
+						.big {
+								height: 60px;
+								width: 39px;
+								display: block;
+								cursor: pointer;
 
-                @include responsive(lp) {
-                    height: 40px;
-                }
+								@include responsive(lp) {
+										height: 40px;
+										width: 26px;
+								}
 
-                &:hover {
-                    path {
-                        fill: $grey-black;
-                    }                    
-                }
-            }
+								&:hover {
+										path {
+												fill: $grey-black;
+										}                    
+								}
+						}
 
-            .sml { 
-                margin-bottom: 20px;
-                margin-left: 8px;
+						.sml { 
+								margin-bottom: 20px;
+								margin-left: 8px;
+								width: 22px;
 
-                @include responsive(lp) {
-                    margin-left: 5px;
-                }
-            }
-        }
+								@include responsive(lp) {
+										margin-left: 5px;
+										width: 15px;
+								}
+						}
+				}
 
-        h2 {
-            padding: 0 80px 0 80px;
-            text-align: center;
-            @include typo-quick($font-size-h1, $font-reg, $white);
-        }
+				h2 {
+						padding: 0 80px 0 80px;
+						text-align: center;
+						@include typo-quick($font-size-h1, $font-reg, $white);
 
-        p {
-            padding: 20px 80px 50px 80px;
-            @include typo-quick($font-size-p, $font-big, $white);
+						a {
+							text-decoration: none;
 
-            @include responsive(nd) {
-                padding: 20px 60px 20px 60px;
-            }
+							&:hover {
+								color: $white;
+								text-decoration: underline;
+							}
+						}
+				}
 
-            @include responsive(lp) {
-                padding: 20px 40px 20px 40px;
-            }
-        }
+				p {
+						padding: 20px 80px 50px 80px;
+						max-width: 950px;
+						margin: auto;
+						line-height: 1.2;
 
-        img.present {
-            margin: auto;
-            display: block;
-            width: 950px;
-            box-sizing: border-box;
-            padding: 0;
+						@include typo-quick($font-size-p, $font-big, $white);
 
-            @include responsive(nd) {
-                width: 100%;
-                padding: 0 60px 0 60px;
-            }
+						@include responsive(nd) {
+								padding: 20px 60px 20px 60px;
+						}
 
-            @include responsive(lp) {
-                padding: 0 40px 0 40px;
-            }
-        }
-    }
+						@include responsive(lp) {
+								padding: 20px 40px 20px 40px;
+						}
+				}
 
-    .wrapper {
-        margin: auto;
-        padding-bottom: 70px;
-        width: 90%;
+				a {
+						color: $white;
+						text-decoration: underline;
 
-        &:after {
-            content: '';
-            display: block;
-            clear: both;
-        }
+						&:hover {
+							color: $blue;
+							text-decoration: underline;
+						}
+				}
 
-        svg {
-            fill: $grey-black;
-            opacity: 0.7;
-        }
+				img.present {
+						margin: auto;
+						display: block;
+						width: 950px;
+						box-sizing: border-box;
+						padding: 0;
 
-        ul {
-            height: 100%;
-            width: 100%;
-            font-size: 0;
-            padding-bottom: 70px;
+						@include responsive(nd) {
+								width: 100%;
+								padding: 0 60px 0 60px;
+						}
 
-            li {
-                @include background-base();
-                display: block;
-                position: relative;
-                width: 25%;
-                height: 500px;
-                overflow: hidden;
+						@include responsive(lp) {
+								padding: 0 40px 0 40px;
+						}
+				}
+		}
 
-                @include responsive(ld) {
-                    height: 400px;
-                }
+		.wrapper {
+				margin: auto;
+				padding-bottom: 70px;
+				width: 90%;
 
-                @include responsive(id) {
-                    width: 33.3%;
-                }
+				&:after {
+						content: '';
+						display: block;
+						clear: both;
+				}
 
-                @include responsive(nd) {
-                    width: 50%;
-                }
+				svg {
+						fill: $grey-black;
+						opacity: 0.7;
+				}
 
-                @include responsive(lp) {
-                    height: 300px;
-                }
+				ul {
+						height: 100%;
+						width: 100%;
+						font-size: 0;
+						padding-bottom: 70px;
 
-                @include responsive(sp) {
-                    width: 80%;
-                    margin-left: 10%;
-                }
+						li {
+								@include background-base();
+								display: block;
+								position: relative;
+								width: 25%;
+								height: 500px;
+								overflow: hidden;
+
+								@include responsive(ld) {
+										height: 400px;
+								}
+
+								@include responsive(id) {
+										width: 33.3%;
+								}
+
+								@include responsive(nd) {
+										width: 50%;
+								}
+
+								@include responsive(lp) {
+										height: 300px;
+								}
+
+								@include responsive(sp) {
+										width: 80%;
+										margin-left: 10%;
+								}
 
 
-                &.width {
-                    width: 50%;
+								&.width {
+										width: 50%;
 
-                    @include responsive(id) {
-                        width: 66.6%;
-                    }
+										@include responsive(id) {
+												width: 66.6%;
+										}
 
-                    @include responsive(nd) {
-                        width: 100%;
-                    }
+										@include responsive(nd) {
+												width: 100%;
+										}
 
-                    @include responsive(sp) {
-                        width: 80%;
-                        margin-left: 10%;
-                    }
-                }
+										@include responsive(sp) {
+												width: 80%;
+												margin-left: 10%;
+										}
+								}
 
-                &.height {
-                    height: 1000px;
+								&.height {
+										height: 1000px;
 
-                    @include responsive(ld) {
-                        height: 800px;
-                    }
+										@include responsive(ld) {
+												height: 800px;
+										}
 
-                    @include responsive(lp) {
-                        height: 600px;
-                    }
+										@include responsive(lp) {
+												height: 600px;
+										}
 
-                    @include responsive(sp) {
-                        height: 300px;
-                    }
-                }
+										@include responsive(sp) {
+												height: 300px;
+										}
+								}
 
-                .wrap {
-                    height: 90%;
-                    width: 90%;
-                    margin-left: 5%;
-                    margin-top: 5%;
-                    position: relative;
-                    overflow: hidden;
-                    cursor: pointer;
-                }
+								.wrap {
+										height: 90%;
+										width: 90%;
+										margin-left: 5%;
+										margin-top: 5%;
+										position: relative;
+										overflow: hidden;
+										cursor: pointer;
+								}
 
-                .img {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    position: relative;
-                    background-size: cover;
-                    background-position: center center;
-                    filter: blur(0px);
-                }
+								.img {
+										width: 100%;
+										height: 100%;
+										display: block;
+										position: relative;
+										background-size: cover;
+										background-position: center center;
+										filter: blur(0px);
+								}
 
-                .overflow {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: radial-gradient(rgba(1,1,1,.9) 0%, rgba(1,1,1,.8) 50%, rgba(1,1,1,.3) 100%);
-                    opacity: 0;
-                }
+								.overflow {
+										width: 100%;
+										height: 100%;
+										display: block;
+										position: absolute;
+										top: 0;
+										left: 0;
+										background: radial-gradient(rgba(1,1,1,.9) 0%, rgba(1,1,1,.8) 50%, rgba(1,1,1,.3) 100%);
+										opacity: 0;
+								}
 
-                .txt {
-                    position: absolute;
-                    width: 100%;
-                    top: 50%;
-                    left: 50%;
-                    font-size: 21px;
-                    box-sizing: border-box;
-                    padding: 20px;
-                    border: 2px 0 0 0 solid $white;
-                    transform: translate(-50%, -50%);
-                    opacity: 0;
-                    margin-top: -100%;
+								.txt {
+										position: absolute;
+										width: 100%;
+										top: 50%;
+										left: 50%;
+										font-size: 21px;
+										box-sizing: border-box;
+										padding: 20px;
+										border: 2px 0 0 0 solid $white;
+										transform: translate(-50%, -50%);
+										opacity: 0;
+										margin-top: -100%;
 
-                    h2 {
-                        @include typo-quick($font-size-h1, $font-reg, $white);
-                        text-align: center;
-                    }
+										h2 {
+												@include typo-quick($font-size-h1, $font-reg, $white);
+												text-align: center;
 
-                    p {
-                        @include typo-quick($font-size-li, $font-big, $white);
-                        padding-top: 10px;
-                        text-align: center;
-                    }
+												a {
+													color: $white;
+												}
+										}
 
-                    .desc {
-                        display: none;
-                    }  
-                }
-            }
-        }
-    }
+										p {
+												@include typo-quick($font-size-li, $font-big, $white);
+												padding-top: 10px;
+												text-align: center;
+										}
+
+										.desc {
+												display: none;
+										}  
+								}
+						}
+				}
+		}
 }
 
 #cv {
-    position: relative;
-    z-index: 100;
-    height: 800px;
-    background-size: cover;
-    background-image: url('../images/bg_2_fixed.jpg');
-    background-attachment: fixed;
-    $top-svg:35%;
-    $height-svg: 185px;
-    $width-svg: 215px;
+		position: relative;
+		z-index: 100;
+		height: 800px;
+		background-size: cover;
+		background-image: url('../images/phare_ilemaurice.jpg');
+		background-attachment: fixed;
+		$top-svg:35%;
+		$height-svg: 185px;
+		$width-svg: 215px;
 
-    svg {
-        cursor: pointer;
-        width: $width-svg;
-        height: $height-svg;
-        margin-top: -$height-svg/2;
-        margin-left: -$width-svg/2;
-        top: $top-svg;
+		svg {
+				opacity: 1;
+				cursor: pointer;
+				width: $width-svg;
+				height: $height-svg;
+				margin-top: -$height-svg/2;
+				margin-left: -$width-svg/2;
+				top: $top-svg;
+				position: absolute;
+				left: 50%;
 
-        @include responsive(sd) {
-            top: 200px;
-        }
+				@include responsive(sd) {
+					top: 200px;
+				}
 
-        #mainCv {
-            display: block;
-        }
+				#mainCv {
+						display: block;
+				}
 
-        #eyeCv {
-            opacity: 0;
-        }
-    }
+				#eyeCv {
+						opacity: 0;
+				}
+		}
 
-    .lineCo {
-        width: 10px;
-        top: $top-svg;
-        margin-top: $height-svg/2;
-        margin-left: -5px;
-        background-color: $white;
-        opacity: .5;
+		.lineCo {
+				width: 10px;
+				top: $top-svg;
+				margin-top: $height-svg/2;
+				margin-left: -5px;
+				background-color: $white;
+				opacity: .5;
+				position: absolute;
+				left: 50%;
 
-        @include responsive(sd) {
-            top: 200px;
-        }
-    }
+				@include responsive(sd) {
+						top: 200px;
+				}
+		}
+
+		.img {
+			display: none;
+			position: relative;
+			padding-top: 50px;
+			padding-bottom: 250px;
+
+			@include responsive(sd) {
+				padding-bottom: 450px;
+			}
+
+			img {
+				display: none;
+				opacity: 0;
+				cursor: pointer;
+				position: relative;
+				width: 950px;
+				margin-left: 50%;
+				left: -475px;
+
+				@include responsive(sd) {
+					width: 90%;
+					left: 5%;
+					margin-left: 0;
+				}
+			}
+		}
 }
 
 #contact {
-    @include pattern($pattern-blue);
-    z-index: 200;
-    width: 950px;
-    margin: auto;
-    margin-top: -200px;
-    height: 400px;
-    box-shadow: rgba(0, 0, 0, .5) 4px 4px 6px;
+		@include pattern($pattern-blue);
+		z-index: 200;
+		width: 950px;
+		margin: auto;
+		margin-top: -200px;
+		height: 400px;
+		box-shadow: rgba(0, 0, 0, .5) 4px 4px 6px;
 
-    @include responsive(sd) {
-        width: 90%;
-        height: 600px;
-        margin-top: -400px;
-    }
+		@include responsive(sd) {
+				width: 90%;
+				height: 600px;
+				margin-top: -400px;
+		}
 
-    h2 {
-        @include typo-quick($font-size-h2, $font-reg, $white);
-    }
+		h2 {
+				@include typo-quick($font-size-h2, $font-reg, $white);
+		}
 
-    p,
-    h2 {
-        padding-top: 15px;
-        padding-left: 15px;
-    }
+		p,
+		h2 {
+				padding: 15px 15px 0;
+		}
 
-    .error {
-        color: #ffa500;
-        font-size: .8em;
+		.error {
+				color: #ffa500;
+				font-size: $font-size-p;
 
-        @include responsive(sd) {
-            position: absolute;
-            bottom: 15px;
-        }
-    }
+				@include responsive(sd) {
+						position: absolute;
+						bottom: 15px;
+				}
+		}
 
-    ul {
-        height: 200px;
-        width: 45%;
-        margin-top: 100px;
-        margin-left: 25px;
+		ul {
+				height: 200px;
+				width: 45%;
+				margin-top: 100px;
+				margin-left: 25px;
 
-        @include responsive(sd) {
-            width: 90%;
-            margin-top: 50px;
-            margin-left: 5%;
-        }
+				@include responsive(sd) {
+						width: 90%;
+						margin-top: 50px;
+						margin-left: 5%;
+				}
 
-        li {
-            opacity: 1;
-            height: 65px;
-            width: 100%;
-            position: relative;
+				li {
+						opacity: 1;
+						height: 65px;
+						width: 100%;
+						position: relative;
 
-            label {@include typo-quick($font-size-li, $font-reg, $white);}
+						label {@include typo-quick($font-size-li, $font-reg, $white);}
 
-            input {
-                @include typo-quick($font-size-li, $font-reg, $white);
-                background: none;
-                border: 0;
-                margin-left: 5px;
-                width: 70%;
-                font-style: normal;
-                color: #000;
-                opacity: .6;
+						input {
+								@include typo-quick($font-size-li, $font-reg, $white);
+								background: none;
+								border: 0;
+								margin-left: 5px;
+								width: 70%;
+								font-style: normal;
+								color: #000;
+								opacity: .6;
 
-                &[placeholder] {
-                    color: #FFF;
-                    font-style: italic;
-                }
+								&[placeholder] {
+										color: #FFF;
+										font-style: italic;
+								}
 
-                &:hover,
-                &:focus {
-                    opacity: 1;
-                }
-            }
+								&:hover,
+								&:focus {
+										opacity: 1;
+								}
+						}
 
-            span {
-                display: block;
-                height: 1px;
-                width: 100%;
-                background-color: rgba(255, 255, 255, .5);
-                margin-top: 5px;
-            }
-        }
+						span {
+								display: block;
+								height: 1px;
+								width: 100%;
+								background-color: rgba(255, 255, 255, .5);
+								margin-top: 5px;
+						}
+				}
 
-        li:last-of-type {
-            position: absolute;
-            top: 70px;
-            left: 52%;
-            width: 45%;
+				li:last-of-type {
+						position: absolute;
+						top: 70px;
+						left: 52%;
+						width: 45%;
 
-            @include responsive(sd) {
-                position: relative;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
+						@include responsive(sd) {
+								position: relative;
+								top: 0;
+								left: 0;
+								width: 100%;
+						}
 
-            label {top: 65px;}
+						label {top: 65px;}
 
-            textarea {
-                @include typo-quick($font-size-li, $font-reg, $white);
-                box-sizing: border-box;
-                background: none;
-                border: 1px solid rgba(255, 255, 255 , .5);
-                width: 100%;
-                height: 230px;
-                padding: 10px;
-                margin-top: 10px;
-                resize: none;
-                
-                &[placeholder] {
-                    color: $white;
-                    font-style: italic;
-                }
-            }
-        }
-    }
+						textarea {
+								@include typo-quick($font-size-li, $font-reg, $white);
+								box-sizing: border-box;
+								background: none;
+								border: 1px solid rgba(255, 255, 255 , .5);
+								width: 100%;
+								height: 230px;
+								padding: 10px;
+								margin-top: 10px;
+								resize: none;
+								
+								&[placeholder] {
+										color: $white;
+										font-style: italic;
+								}
+						}
+				}
+		}
 
-    .submit {
-        @include typo-quick($font-size-p, $font-reg, $white-grey);
-        cursor: pointer;
-        z-index: 250;
-        height: 50px;
-        width: 180px;
-        margin-top: 10px;
-        margin-right: -25px;
-        background-color: $grey;
-        box-shadow: rgba(0, 0, 0, .5) -1px 2px 2px;
-        border: 0;
-        letter-spacing: 1px;
-        transition: all 0.3s;
+		.submit {
+				@include typo-quick($font-size-p, $font-reg, $white-grey);
+				cursor: pointer;
+				z-index: 250;
+				height: 50px;
+				width: 180px;
+				margin-top: 10px;
+				margin-right: -25px;
+				background-color: $grey;
+				box-shadow: rgba(0, 0, 0, .5) -1px 2px 2px;
+				border: 0;
+				letter-spacing: 1px;
+				transition: all 0.3s;
 
-        &:hover {
-            color: $white;
-            letter-spacing: 3px;
-            font-size: $font-size-p+.2;
-        }
-    }
+				&:hover {
+						color: $white;
+						letter-spacing: 3px;
+						font-size: $font-size-p+.2;
+				}
+		}
 
-    .decoSubmit {
-        z-index: 150;
-        height: 0;
-        width: 0;
-        margin-top: 60px;
-        margin-right: -25px;
-        border-bottom: 25.5px solid transparent;
-        border-left: 25.5px solid $grey-white;
-    }
+		.decoSubmit {
+				z-index: 150;
+				height: 0;
+				width: 0;
+				margin-top: 60px;
+				margin-right: -25px;
+				border-bottom: 25.5px solid transparent;
+				border-left: 25.5px solid $grey-white;
+		}
 }
 
 #map {
-    z-index: 100;
-    background-size: cover;    
-    background-image: url('../images/map.jpg');
-    background-position: center top;
-    height: 600px;
-    margin-top: -200px;
-    margin-bottom: 150px;
-    box-shadow: rgba(0, 0, 0, .7) 2px 2px 10px;
-    
-    @include responsive(ld) {
-        height: 500px;
-    }
+		z-index: 100;
+		background-size: cover;    
+		background-image: url('../images/map.jpg');
+		background-position: center top;
+		height: 600px;
+		margin-top: -200px;
+		margin-bottom: 150px;
+		box-shadow: rgba(0, 0, 0, .7) 2px 2px 10px;
+		
+		@include responsive(ld) {
+				height: 500px;
+		}
 
-    @include responsive(lp) {
-        margin-bottom: 400px;
-    }
+		@include responsive(lp) {
+				margin-bottom: 400px;
+		}
 
-    span {
-        @include pattern($pattern-blue);
-        width: 5px;
-        margin-left: -2.5px;
-        bottom: 150px;
-        top: 200px;
+		span {
+				@include pattern($pattern-blue);
+				width: 5px;
+				margin-left: -2.5px;
+				bottom: 150px;
+				top: 200px;
 
-        svg {
-            height: 18px;
-            width: 16px;
-            margin-left: -8px;
-            margin-bottom: -16px;
-        }
-    }
+				svg {
+						height: 18px;
+						width: 16px;
+						margin-left: -8px;
+						margin-bottom: -16px;
+				}
+		}
 }
 
 #link {
-    z-index: -100;
-    height: 150px;
-    background-color: $grey;
-    position: fixed;
-    bottom: 0;
+		z-index: -100;
+		height: 150px;
+		background-color: $grey;
+		position: fixed;
+		bottom: 0;
 
-    @include responsive(lp) {
-        height: 400px;
-    }
+		@include responsive(lp) {
+				height: 400px;
+		}
 
-    .wrapper {
-        @include size();
-        padding-top: 20px;
+		.wrapper {
+				@include size();
+				padding-top: 20px;
 
-        @include responsive(sd) {
-            width: 90%;
-        }
+				@include responsive(sd) {
+						width: 90%;
+				}
 
-        @include responsive(lp) {
-            width: 200px;
-        }
+				@include responsive(lp) {
+						width: 200px;
+				}
 
-        .col3 {
-            width: 30%;
-            float: left;
-            position: relative;
-            margin-left: 10px;
+				.col3 {
+						width: 30%;
+						float: left;
+						position: relative;
+						margin-left: 10px;
 
-            @include responsive(lp) {
-                float: none;
-                width: 100%;
-            }
+						@include responsive(lp) {
+								float: none;
+								width: 100%;
+						}
 
-            h2 {
-                @include typo-quick($font-size-li, $font-reg, $white);
-                text-decoration: none;
-                line-height: 30px;
-                position: relative;
-            }
+						h2 {
+								@include typo-quick($font-size-li, $font-reg, $white);
+								text-decoration: none;
+								line-height: 30px;
+								position: relative;
+						}
 
-            span {
-                height: 1px;
-                background-color: $white;
-                display: block;
-                position: relative;
-            }
+						span {
+								height: 1px;
+								background-color: $white;
+								display: block;
+								position: relative;
+						}
 
-            .deco1 {width: 105px;}
+						.deco1 {width: 105px;}
 
-            .deco2,
-            .deco3 {
-                width: 245px;
+						.deco2,
+						.deco3 {
+								width: 245px;
 
-                @include responsive(sd) {
-                    width: 100%;
-                }
-            }
+								@include responsive(sd) {
+										width: 100%;
+								}
+						}
 
-            ul {
-                padding-top: 5px;
-                padding-left: 5px;
-            }
+						ul {
+								padding-top: 5px;
+								padding-left: 5px;
+						}
 
-            li {
-                @include typo-quick($font-size-li, $font-reg, $white);
-            }
+						li {
+								@include typo-quick($font-size-li, $font-reg, $white);
+						}
 
-            a {
-                text-decoration: none;
-                color: $white;
-            }
+						a {
+								text-decoration: none;
+								color: $white;
+						}
 
-            a:hover,
-            a:active {
-                text-decoration: underline;
-            }
-        }
+						a:hover,
+						a:active {
+								text-decoration: underline;
+						}
+				}
 
-        .mrL {
-            margin-left: 3%;
+				.mrL {
+						margin-left: 3%;
 
-            @include responsive(lp) {
-                margin-left: 10px;
-                margin-top: 10px;
-            }
-        }
+						@include responsive(lp) {
+								margin-left: 10px;
+								margin-top: 10px;
+						}
+				}
 
-        .col3::before {
-            content: '';
-            height: 100%;
-            width: 1px;
-            background-color: $white;
-            position: absolute;
-            left: -10px;
-        }
-    }
+				.col3::before {
+						content: '';
+						height: 100%;
+						width: 1px;
+						background-color: $white;
+						position: absolute;
+						left: -10px;
+				}
+		}
 }
