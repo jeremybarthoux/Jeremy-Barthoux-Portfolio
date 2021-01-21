@@ -8,7 +8,7 @@
 	$message = 'De :'.$_POST["nom"]."<br />".' Sujet :'.$_POST["raison"]."<br /><br />".$_POST["message"];
 	$message = wordwrap($message, 70, "\r\n");
 
-	$to = 'silphidecrea@gmail.com';
+	$to = '--';
 	$subject = 'Contact Web Portfolio';
 
 	mail($to, $subject, $message, $header);
